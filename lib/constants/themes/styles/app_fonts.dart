@@ -12,7 +12,6 @@ abstract class AppFontsStyles implements AppCustomStyles {
 }
 
 class AppFonts implements AppFontsStyles {
-  static String _roboto = 'Roboto';
   static String _montserrat = 'Montserrat';
   static String _arvo = 'Arvo';
 
@@ -20,23 +19,23 @@ class AppFonts implements AppFontsStyles {
   String get title1 => _montserrat;
 
   @override
-  String get title2 => _arvo;
+  String get title2 => _montserrat;
 
   @override
-  String get title3 => _roboto;
+  String get title3 => _montserrat;
 
   @override
-  String get title4 => _arvo;
+  String get title4 => _montserrat;
 
   @override
-  String get subtitle => _montserrat;
+  String get subtitle => _arvo;
 
   @override
-  String get caption => _roboto;
+  String get caption => _arvo;
 
   @override
-  String get body => _roboto;
+  String get body => _arvo;
 
   @override
-  String get button => _montserrat;
+  String get button => _arvo;
 }

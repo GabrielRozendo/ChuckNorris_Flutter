@@ -13,7 +13,7 @@ void main() {
       title: AppStrings.appName,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       onGenerateRoute: AppRouter.generateRoute,
       initialRoute: AppRoutes.initialRoute,
       debugShowCheckedModeBanner: false,

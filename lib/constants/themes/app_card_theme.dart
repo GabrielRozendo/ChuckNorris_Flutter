@@ -4,13 +4,10 @@ import '../app_colors.dart';
 class AppCardTheme {
   AppCardTheme._();
 
-  static double radius = 10;
-
   static CardTheme _cardTheme(bool isDark) => CardTheme(
-        color: isDark ? AppColors.darkjunglegreen : AppColors.goldCrayola,
+        color: isDark ? AppColors.eerieBlack : AppColors.paleSpringBud.shade400,
         shape: RoundedRectangleBorder(
-          // side: BorderSide(color: AppColors.aliceblue, width: 1),
-          borderRadius: BorderRadius.circular(radius),
+          borderRadius: BorderRadius.circular(10),
         ),
         elevation: 2,
       );

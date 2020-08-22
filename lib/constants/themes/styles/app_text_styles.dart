@@ -75,20 +75,4 @@ class AppTextStyles implements AppCustomStylesText {
         fontFamily: _appFonts.button,
         fontWeight: FontWeight.w600,
       );
-
-  // static TextStyle get body => TextStyle(fontFamily: AppFonts.body);
-  // static TextStyle get titleFont => TextStyle(fontFamily: AppFonts.title1);
-
-  // static TextStyle get title =>
-  //     titleFont.copyWith(fontSize: AppFontSizes.title);
-  // static TextStyle get titleLight =>
-  //     title.copyWith(fontWeight: FontWeight.w300);
-
-  // static TextStyle get body => bodyFont.copyWith(
-  //     fontSize: AppFontSizes.body, fontWeight: FontWeight.w300);
-  // static TextStyle get bodySm => body.copyWith(fontSize: AppFontSizes.bodySm);
-}
-
-extension CustomStyles on TextTheme {
-  TextStyle get test => TextStyle();
 }

@@ -3,63 +3,44 @@ import 'app_card_theme.dart';
 import 'app_text_theme.dart';
 import '../app_colors.dart';
 
-enum AppThemes { lightTheme, darkTheme }
-
-extension AppThemesExtension on AppThemes {
-  static AppThemes get defaultTheme => AppThemes.lightTheme;
-
-  ThemeData get themeData {
-    switch (this) {
-      case AppThemes.darkTheme:
-        return AppTheme.darkTheme;
-
-      case AppThemes.lightTheme:
-      default:
-        return AppTheme.lightTheme;
-    }
-  }
-}
-
 class AppTheme {
   AppTheme._();
 
   static ThemeData get lightTheme => ThemeData(
         brightness: Brightness.light,
-        primaryColor: AppColors.greenMunsell,
-        accentColor: AppColors.goldCrayola,
-        backgroundColor: AppColors.lightYellow,
-        scaffoldBackgroundColor: AppColors.lightYellow,
+        primaryColor: AppColors.pistachio,
+        accentColor: AppColors.carrotOrange,
+        backgroundColor: AppColors.teaGreen,
+        scaffoldBackgroundColor: AppColors.teaGreen,
         primaryTextTheme: AppTextTheme.lightTextTheme,
         primaryColorLight: AppColors.eerieBlack,
-        primaryColorDark: AppColors.lightYellow,
+        primaryColorDark: AppColors.teaGreen,
         primaryIconTheme: IconThemeData(
-          color: AppColors.greenMunsell,
+          color: AppColors.oliveDrab7,
           size: 20,
         ),
         cardTheme: AppCardTheme.lightCardTheme,
         cardColor: AppCardTheme.lightCardTheme.color,
         shadowColor: AppColors.eerieBlack,
-        dividerColor: AppColors.greenMunsell,
-        errorColor: AppColors.orangeSoda,
+        dividerColor: AppColors.carrotOrange,
       );
 
   static ThemeData get darkTheme => ThemeData(
         brightness: Brightness.dark,
-        primaryColor: AppColors.lightYellow,
-        accentColor: AppColors.goldCrayola,
+        primaryColor: AppColors.paleSpringBud,
+        accentColor: AppColors.carrotOrange,
         backgroundColor: AppColors.eerieBlack,
         scaffoldBackgroundColor: AppColors.eerieBlack,
         primaryTextTheme: AppTextTheme.darkTextTheme,
-        primaryColorLight: AppColors.lightYellow,
+        primaryColorLight: AppColors.paleSpringBud,
         primaryColorDark: AppColors.eerieBlack,
         primaryIconTheme: IconThemeData(
-          color: AppColors.lightYellow,
+          color: AppColors.teaGreen,
           size: 20,
         ),
         cardTheme: AppCardTheme.darkCardTheme,
         cardColor: AppCardTheme.darkCardTheme.color,
-        shadowColor: AppColors.lightYellow,
-        dividerColor: AppColors.goldCrayola,
-        errorColor: AppColors.orangeSoda,
+        shadowColor: AppColors.teaGreen,
+        dividerColor: AppColors.carrotOrange,
       );
 }

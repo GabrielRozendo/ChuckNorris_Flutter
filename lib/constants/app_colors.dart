@@ -3,101 +3,125 @@ import 'package:flutter/material.dart';
 class AppColors {
   AppColors._();
 
-  static const MaterialColor greenMunsell =
-      MaterialColor(_greenMunsellPrimaryValue, <int, Color>{
-    50: Color(0xFFE0F5EF),
-    100: Color(0xFFB3E5D7),
-    200: Color(0xFF80D4BC),
-    300: Color(0xFF4DC2A1),
-    400: Color(0xFF26B58C),
-    500: Color(_greenMunsellPrimaryValue),
-    600: Color(0xFF00A070),
-    700: Color(0xFF009765),
-    800: Color(0xFF008D5B),
-    900: Color(0xFF007D48),
+  static const MaterialColor paleSpringBud =
+      MaterialColor(_paleSpringBudPrimaryValue, <int, Color>{
+    50: Color(0xFFFCFDF7),
+    100: Color(0xFFF9FAEB),
+    200: Color(0xFFF5F7DE),
+    300: Color(0xFFF0F4D1),
+    400: Color(0xFFEDF1C7),
+    500: Color(_paleSpringBudPrimaryValue),
+    600: Color(0xFFE7EDB7),
+    700: Color(0xFFE4EBAE),
+    800: Color(0xFFE1E8A6),
+    900: Color(0xFFDBE498),
   });
-  static const int _greenMunsellPrimaryValue = 0xFF00A878; //#00A878
+  static const int _paleSpringBudPrimaryValue = 0xFFEAEFBD; //#EAEF8D
 
-  static const MaterialColor greenMunsellAccent =
-      MaterialColor(_greenMunsellAccentValue, <int, Color>{
-    100: Color(0xFFAAFFD5),
-    200: Color(_greenMunsellAccentValue),
-    400: Color(0xFF44FFA3),
-    700: Color(0xFF2AFF97),
-  });
-  static const int _greenMunsellAccentValue = 0xFF77FFBC; //#77FF8C
-
-  static const MaterialColor lightYellow =
-      MaterialColor(_lightYellowPrimaryValue, <int, Color>{
-    50: Color(0xFFFDFEFB),
-    100: Color(0xFFFBFEF5),
-    200: Color(0xFFF8FDEE),
-    300: Color(0xFFF5FCE7),
-    400: Color(0xFFF2FBE1),
-    500: Color(_lightYellowPrimaryValue),
-    600: Color(0xFFEEF9D8),
-    700: Color(0xFFECF9D3),
-    800: Color(0xFFE9F8CE),
-    900: Color(0xFFE5F6C5),
-  });
-  static const int _lightYellowPrimaryValue = 0xFFF0FADC; //#F0FADC
-
-  static const MaterialColor lightYellowAccent =
-      MaterialColor(_lightYellowAccentValue, <int, Color>{
+  static const MaterialColor paleSpringBudAccent =
+      MaterialColor(_paleSpringBudAccentValue, <int, Color>{
     100: Color(0xFFFFFFFF),
-    200: Color(_lightYellowAccentValue),
+    200: Color(_paleSpringBudAccentValue),
     400: Color(0xFFFFFFFF),
     700: Color(0xFFFFFFFF),
   });
-  static const int _lightYellowAccentValue = 0xFFFFFFFF; //#FFFFFF
+  static const int _paleSpringBudAccentValue = 0xFFFFFFFF; //#FFFFFF
 
-  static const MaterialColor goldCrayola =
-      MaterialColor(_goldCrayolaPrimaryValue, <int, Color>{
-    50: Color(0xFFFEF8EF),
-    100: Color(0xFFFBECD7),
-    200: Color(0xFFF9E0BC),
-    300: Color(0xFFF7D4A1),
-    400: Color(0xFFF5CA8C),
-    500: Color(_goldCrayolaPrimaryValue),
-    600: Color(0xFFF1BB70),
-    700: Color(0xFFEFB365),
-    800: Color(0xFFEDAB5B),
-    900: Color(0xFFEA9E48),
+  static const MaterialColor teaGreen =
+      MaterialColor(_teaGreenPrimaryValue, <int, Color>{
+    50: Color(0xFFF9FCF5),
+    100: Color(0xFFEFF7E6),
+    200: Color(0xFFE4F1D6),
+    300: Color(0xFFD9EBC5),
+    400: Color(0xFFD1E7B8),
+    500: Color(_teaGreenPrimaryValue),
+    600: Color(0xFFC3E0A5),
+    700: Color(0xFFBCDC9B),
+    800: Color(0xFFB5D892),
+    900: Color(0xFFA9D082),
   });
-  static const int _goldCrayolaPrimaryValue = 0xFFF3C178; //#F3C178
+  static const int _teaGreenPrimaryValue = 0xFFC9E3AC; //#C9E3AC
 
-  static const MaterialColor goldCrayolaAccent =
-      MaterialColor(_goldCrayolaAccentValue, <int, Color>{
+  static const MaterialColor teaGreenAccent =
+      MaterialColor(_teaGreenAccentValue, <int, Color>{
     100: Color(0xFFFFFFFF),
-    200: Color(_goldCrayolaAccentValue),
-    400: Color(0xFFFFEDDA),
-    700: Color(0xFFFFE1C1),
+    200: Color(_teaGreenAccentValue),
+    400: Color(0xFFFAFFF5),
+    700: Color(0xFFEDFFDB),
   });
-  static const int _goldCrayolaAccentValue = 0xFFFFFFFF; //#FFFFFF
+  static const int _teaGreenAccentValue = 0xFFFFFFFF; //#FFFFFF
 
-  static const MaterialColor orangeSoda =
-      MaterialColor(_orangeSodaPrimaryValue, <int, Color>{
-    50: Color(0xFFFFECE8),
-    100: Color(0xFFFFCFC6),
-    200: Color(0xFFFFAFA0),
-    300: Color(0xFFFE8E7A),
-    400: Color(0xFFFE765E),
-    500: Color(_orangeSodaPrimaryValue),
-    600: Color(0xFFFE563B),
-    700: Color(0xFFFE4C32),
-    800: Color(0xFFFE422A),
-    900: Color(0xFFFD311C),
+  static const MaterialColor pistachio =
+      MaterialColor(_pistachioPrimaryValue, <int, Color>{
+    50: Color(0xFFF2F7ED),
+    100: Color(0xFFDEECD3),
+    200: Color(0xFFC8DFB6),
+    300: Color(0xFFB1D299),
+    400: Color(0xFFA1C883),
+    500: Color(_pistachioPrimaryValue),
+    600: Color(0xFF88B865),
+    700: Color(0xFF7DAF5A),
+    800: Color(0xFF73A750),
+    900: Color(0xFF61993E),
   });
-  static const int _orangeSodaPrimaryValue = 0xFFFE5E41; //#FE5E41
+  static const int _pistachioPrimaryValue = 0xFF90BE6D; //#90BE6D
 
-  static const MaterialColor orangeSodaAccent =
-      MaterialColor(_orangeSodaAccentValue, <int, Color>{
+  static const MaterialColor pistachioAccent =
+      MaterialColor(_pistachioAccentValue, <int, Color>{
+    100: Color(0xFFF3FFEB),
+    200: Color(_pistachioAccentValue),
+    400: Color(0xFFB2FF85),
+    700: Color(0xFFA2FF6C),
+  });
+  static const int _pistachioAccentValue = 0xFFD2FFB8; //#D2FFB8
+
+  static const MaterialColor carrotOrange =
+      MaterialColor(_carrotOrangePrimaryValue, <int, Color>{
+    50: Color(0xFFFCF2E2),
+    100: Color(0xFFF9DEB7),
+    200: Color(0xFFF5C888),
+    300: Color(0xFFF0B158),
+    400: Color(0xFFEDA134),
+    500: Color(_carrotOrangePrimaryValue),
+    600: Color(0xFFE7880E),
+    700: Color(0xFFE47D0C),
+    800: Color(0xFFE17309),
+    900: Color(0xFFDB6105),
+  });
+  static const int _carrotOrangePrimaryValue = 0xFFEA9010; //#EA9010
+
+  static const MaterialColor carrotOrangeAccent =
+      MaterialColor(_carrotOrangeAccentValue, <int, Color>{
     100: Color(0xFFFFFFFF),
-    200: Color(_orangeSodaAccentValue),
-    400: Color(0xFFFFCFCB),
-    700: Color(0xFFFFB8B2),
+    200: Color(_carrotOrangeAccentValue),
+    400: Color(0xFFFFC29D),
+    700: Color(0xFFFFB284),
   });
-  static const int _orangeSodaAccentValue = 0xFFFFFEFE; //#FFFEFE
+  static const int _carrotOrangeAccentValue = 0xFFFFE2D0; //#FFE200
+
+  static const MaterialColor oliveDrab7 =
+      MaterialColor(_oliveDrab7PrimaryValue, <int, Color>{
+    50: Color(0xFFE7E7E4),
+    100: Color(0xFFC3C3BC),
+    200: Color(0xFF9B9B8F),
+    300: Color(0xFF737362),
+    400: Color(0xFF555541),
+    500: Color(_oliveDrab7PrimaryValue),
+    600: Color(0xFF31311B),
+    700: Color(0xFF2A2A17),
+    800: Color(0xFF232312),
+    900: Color(0xFF16160A),
+  });
+  static const int _oliveDrab7PrimaryValue = 0xFF37371F; //#37371F
+
+  static const MaterialColor oliveDrab7Accent =
+      MaterialColor(_oliveDrab7AccentValue, <int, Color>{
+    100: Color(0xFFFFFF58),
+    200: Color(_oliveDrab7AccentValue),
+    400: Color(0xFFF1F100),
+    700: Color(0xFFD8D800),
+  });
+  static const int _oliveDrab7AccentValue = 0xFFFFFF25; //#FFFF25
 
   static const MaterialColor eerieBlack =
       MaterialColor(_eerieBlackPrimaryValue, <int, Color>{
@@ -123,27 +147,4 @@ class AppColors {
   });
   static const int _eerieBlackAccentValue = 0xFFFF1D1D; //#FF1D1D
 
-  static const MaterialColor darkjunglegreen =
-      MaterialColor(_darkJungleGreenPrimaryValue, <int, Color>{
-    50: Color(0xFFE2E4E4),
-    100: Color(0xFFB6BCBB),
-    200: Color(0xFF86908D),
-    300: Color(0xFF56635F),
-    400: Color(0xFF31413D),
-    500: Color(_darkJungleGreenPrimaryValue),
-    600: Color(0xFF0B1C18),
-    700: Color(0xFF091814),
-    800: Color(0xFF071310),
-    900: Color(0xFF030B08),
-  });
-  static const int _darkJungleGreenPrimaryValue = 0xFF0D201B; //#0D201B
-
-  static const MaterialColor darkjunglegreenAccent =
-      MaterialColor(_darkJungleGreenAccentValue, <int, Color>{
-    100: Color(0xFF50FFA7),
-    200: Color(_darkJungleGreenAccentValue),
-    400: Color(0xFF00E974),
-    700: Color(0xFF00CF68),
-  });
-  static const int _darkJungleGreenAccentValue = 0xFF1DFF8E; //#1DFF8E
 }

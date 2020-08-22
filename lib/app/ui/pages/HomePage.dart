@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
             AppRoutes.search,
             arguments: 'Search',
           ),
-          child: Text('Search'),
+          child: Text('Searcha'),
         ),
       ),
     );
