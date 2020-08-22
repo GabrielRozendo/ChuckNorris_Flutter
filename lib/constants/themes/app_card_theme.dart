@@ -9,7 +9,7 @@ class AppCardTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        elevation: 2,
+        elevation: 5,
       );
 
   static CardTheme get lightCardTheme => _cardTheme(false);

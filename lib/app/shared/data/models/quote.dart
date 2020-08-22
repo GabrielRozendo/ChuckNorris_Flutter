@@ -7,6 +7,7 @@
 import 'dart:convert';
 
 import 'category.dart';
+import '../../../../constants/app_strings.dart';
 
 class Quote {
   Quote({
@@ -19,7 +20,7 @@ class Quote {
     this.value,
   });
 
-  final List<String> categories;
+  final List<Category> categories;
   final DateTime createdAt;
   final String iconUrl;
   final String id;
@@ -31,18 +32,32 @@ class Quote {
 
   String toRawJson() => json.encode(toJson());
 
-  factory Quote.fromJson(Map<String, dynamic> json) => Quote(
-        categories: List<String>.from(json['categories'].map((x) => x)),
-        createdAt: DateTime.parse(json['created_at']),
-        iconUrl: json['icon_url'],
-        id: json['id'],
-        updatedAt: DateTime.parse(json['updated_at']),
-        url: json['url'],
-        value: json['value'],
+  static List<Category> _getCategories(Map<String, dynamic> json) {
+    List<Category> categories = json['categories'] == null
+        ? []
+        : List<Category>.from(json['categories'].map((x) => x));
+
+    if (categories.isEmpty)
+      categories.add(
+        Category(name: AppStrings.uncategorized),
       );
+    return categories;
+  }
+
+  factory Quote.fromJson(Map<String, dynamic> json) {
+    return Quote(
+      categories: _getCategories(json),
+      createdAt: DateTime.parse(json['created_at']),
+      iconUrl: json['icon_url'],
+      id: json['id'],
+      updatedAt: DateTime.parse(json['updated_at']),
+      url: json['url'],
+      value: json['value'],
+    );
+  }
 
   Map<String, dynamic> toJson() => {
-        'categories': List<Category>.from(categories.map((x) => x)),
+        'categories': List<Category>.from(categories.map((x) => x.toJson())),
         'created_at': createdAt.toIso8601String(),
         'icon_url': iconUrl,
         'id': id,

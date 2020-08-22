@@ -13,7 +13,7 @@ class Category {
   String toRawJson() => json.encode(toJson());
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
-        name: json['total'],
+        name: json['name'],
       );
 
   Map<String, dynamic> toJson() => {

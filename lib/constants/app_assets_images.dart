@@ -6,4 +6,5 @@ class AppAssetsImages {
   static const String share = 'assets/images/icons8-connect-64.png';
   static const String search = 'assets/images/icons8-search-64.png';
   static const String unavailable = 'assets/images/icons8-unavailable-64.png';
+  static const String quoteLeft = 'assets/images/icons8-quote-left-64.png';
 }

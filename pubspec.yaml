@@ -31,6 +31,7 @@ flutter:
     - assets/images/icons8-connect-64.png
     - assets/images/icons8-search-64.png
     - assets/images/icons8-unavailable-64.png
+    - assets/images/icons8-quote-left-64.png
 
     - assets/data/mock/
 

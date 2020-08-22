@@ -1,6 +1,9 @@
+import 'package:chucknorris_quotes/app/shared/data/models/category.dart';
 import 'package:chucknorris_quotes/app/shared/data/models/quote.dart';
+import 'package:chucknorris_quotes/app/ui/widgets/quote_tile.dart';
 import 'package:chucknorris_quotes/constants/app_assets_images.dart';
 import 'package:chucknorris_quotes/constants/app_dimens.dart';
+import 'package:chucknorris_quotes/constants/app_strings.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/app_routes.dart';
 import '../../shared/repositories/quotes/service/quotes_repository.dart';
@@ -8,14 +11,29 @@ import '../../shared/repositories/quotes/service/quotes_repository.dart';
 class HomePage extends StatelessWidget {
   final QuotesRepository service = QuotesRepository();
   List<Quote> _quotes = [
+    //TODO: Remove
     Quote(
-        categories: [],
-        createdAt: DateTime.now(),
-        iconUrl: '',
-        id: '',
-        updatedAt: DateTime.now(),
-        url: '',
-        value: ''),
+      categories: [
+        Category(name: 'dev'),
+        Category(name: 'humor'),
+      ],
+      createdAt: DateTime.now(),
+      iconUrl: 'https://assets.chucknorris.host/img/avatar/chuck-norris.png',
+      id: 'KjILg4flRjyoyTU6tfvvfQ',
+      updatedAt: DateTime.now(),
+      url: 'https://api.chucknorris.io/jokes/KjILg4flRjyoyTU6tfvvfQ',
+      value: 'Life is what Chuck Norris makes it.',
+    ),
+    Quote(
+      categories: [Category(name: AppStrings.uncategorized)],
+      createdAt: DateTime.now(),
+      iconUrl: 'https://assets.chucknorris.host/img/avatar/chuck-norris.png',
+      id: 'KjILg4flRjyoyTU6tfvvfQ',
+      updatedAt: DateTime.now(),
+      url: 'https://api.chucknorris.io/jokes/KjILg4flRjyoyTU6tfvvfQ',
+      value:
+          'asfd asklf asdçf jkaslçd jfaslçj dflaçsf jkaslçd jfaslçj dflaçs f jkaslçd jfaslçj dflaçs f jkaslçd jfaslçj dflaçs f jkaslçd jfaslçj dflaçs f jkaslçd jfaslçj dflaçs f jkaslçd jfaslçj dflaçsj dfldsaj lsaj fas lçfjsçl jflçhat Chuck Norris makes it.',
+    ),
   ];
   HomePage({Key key}) : super(key: key);
 
@@ -24,6 +42,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: Image.asset(AppAssetsImages.search),
@@ -54,7 +73,7 @@ class HomePage extends StatelessWidget {
             ),
             SizedBox(height: AppDimens.paddingM),
             Text(
-              'Nothing to show here!',
+              AppStrings.emptyStateMessage,
               style: Theme.of(context).primaryTextTheme.subtitle1,
             ),
           ],
@@ -62,9 +81,8 @@ class HomePage extends StatelessWidget {
       );
 
   Widget _list(BuildContext context) => ListView.separated(
-      itemBuilder: (BuildContext context, int index) {
-        return Text(index.toString());
-      },
+      itemBuilder: (BuildContext context, int index) =>
+          QuoteTile(_quotes[index]),
       separatorBuilder: (_, __) => Divider(),
       itemCount: _quotes?.length ?? 0);
 }
