@@ -1,0 +1,3 @@
+class AppSharedPref {
+  AppSharedPref._();
+}
