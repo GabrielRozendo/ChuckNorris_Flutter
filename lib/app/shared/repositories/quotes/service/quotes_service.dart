@@ -8,7 +8,7 @@ class QuotesService extends HttpRequestProtocol {
   QuotesService(this.request);
 
   @override
-  String get baseUrl => QuoteEndpoints.baseUrl;
+  String get baseUrl => QuotesEndpoints.baseUrl;
 
   @override
   Map<String, String> get headers => {

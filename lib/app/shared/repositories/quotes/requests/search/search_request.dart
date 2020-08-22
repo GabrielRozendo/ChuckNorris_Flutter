@@ -6,7 +6,7 @@ class QuotesSearchRequest extends RequestProtocol {
   QuotesSearchRequest(this.term);
 
   @override
-  String get endpoint => QuoteEndpoints.search(term);
+  String get endpoint => QuotesEndpoints.search(term);
 
   @override
   String get mock => throw UnimplementedError();

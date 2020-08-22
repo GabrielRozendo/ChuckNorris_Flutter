@@ -1,7 +1,7 @@
 import '../../../../../constants/app_settings.dart';
 
-class QuoteEndpoints {
-  QuoteEndpoints._();
+class QuotesEndpoints {
+  QuotesEndpoints._();
 
   static String get baseUrl => AppSettings.baseUrl;
 

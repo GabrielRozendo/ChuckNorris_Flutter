@@ -12,9 +12,8 @@ class AppRouter {
         );
 
       case AppRoutes.search:
-        final arguments = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (_) => SearchPage(arguments),
+          builder: (_) => SearchPage(),
         );
         break;
 

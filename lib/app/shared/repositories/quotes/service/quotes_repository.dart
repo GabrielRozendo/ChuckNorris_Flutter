@@ -6,11 +6,11 @@ import '../../../network/http_session.dart';
 import '../../../network/network_mappers.dart';
 import '../../../../../constants/app_strings.dart';
 
-class QuoteRepository {
-  QuoteRepository._();
+class QuotesRepository {
+  QuotesRepository._();
 
-  static final _quoteRepository = QuoteRepository._();
-  factory QuoteRepository() => _quoteRepository;
+  static final _quotesRepository = QuotesRepository._();
+  factory QuotesRepository() => _quotesRepository;
 
   final session = HttpSession();
 
