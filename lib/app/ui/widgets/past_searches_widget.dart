@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../../app/shared/data/models/search_result.dart';
 
 class PastSearchesWidget extends StatelessWidget {
-  final List<String> pastSearches;
+  final List<SearchResult> pastSearches;
   const PastSearchesWidget(this.pastSearches, {Key key}) : super(key: key);
 
   @override
@@ -14,5 +15,6 @@ class PastSearchesWidget extends StatelessWidget {
     );
   }
 
-  Widget _tile(BuildContext context, int index) => Text(pastSearches[index]);
+  Widget _tile(BuildContext context, int index) =>
+      Text(pastSearches[index].term);
 }

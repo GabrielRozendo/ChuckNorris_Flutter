@@ -13,7 +13,7 @@ enum MockFiles {
 }
 
 extension MockFilesExtension on MockFiles {
-  String combinePath(String file) => p.join('mocks', 'json', file);
+  String combinePath(String file) => p.join('test', 'mocks', 'json', file);
 
   String get fileName {
     switch (this) {

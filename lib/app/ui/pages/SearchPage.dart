@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/past_searches_widget.dart';
 import '../widgets/suggestions_widget.dart';
-import '../../shared/data/models/category.dart';
+import '../../shared/data/viewmodels/past_searches_model.dart';
+import '../../shared/data/viewmodels/categories_model..dart';
 import '../../shared/repositories/providers/home_results.dart';
 import '../../shared/repositories/quotes/service/quotes_repository.dart';
 import '../../../constants/app_assets_images.dart';
@@ -11,29 +12,10 @@ import '../../../constants/app_strings.dart';
 
 class SearchPage extends StatelessWidget {
   final repository = QuotesRepository();
-  final categories = List<Category>.of([
-    Category(name: 'Dev'),
-    Category(name: 'Humor'),
-    Category(name: 'Think'),
-    Category(name: 'Dev'),
-    Category(name: 'Humor'),
-    Category(name: 'Think'),
-    Category(name: 'Dev'),
-    Category(name: 'Humor'),
-  ]);
-  final pastSearches = List<String>.of([
-    'girl',
-    'blah',
-    'aaa',
-    'girl',
-    'blah',
-    'aaa',
-    'girl',
-    'blah',
-    'aaa',
-  ]);
+  final CategoriesViewModel categories;
+  final PastSearchesViewModel pastSearches;
 
-  SearchPage({Key key}) : super(key: key);
+  SearchPage(this.categories, this.pastSearches, {Key key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
   final _searchController = TextEditingController();
@@ -50,8 +32,7 @@ class SearchPage extends StatelessWidget {
               _appBar(context),
               SliverToBoxAdapter(child: Divider()),
               SuggestionsWidget(categories),
-              PastSearchesWidget(pastSearches),
-              // ),
+              PastSearchesWidget(pastSearches.sortHistory),
             ],
           ),
         ),
