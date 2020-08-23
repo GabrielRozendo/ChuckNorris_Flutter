@@ -15,3 +15,21 @@
 ### Dark mode
 
 Created checking color contrast: <https://coolors.co/contrast-checker>
+
+
+
+test coverages...
+
+LINUX
+sudo apt-get update -qq -y
+sudo apt-get install lcov -y
+
+MAC
+brew install lcov
+
+WINDOWS
+Install WSL + LINUX Commands
+
+flutter test --coverage
+(if run on Windows, need change \ for /)
+genhtml coverage/lcov.info -o coverage/html
