@@ -1,12 +1,12 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:chucknorris_quotes/app/shared/data/models/quote.dart';
-import 'package:chucknorris_quotes/app/ui/widgets/circle_image_button.dart';
-import 'package:chucknorris_quotes/constants/app_assets_images.dart';
-import 'package:chucknorris_quotes/constants/app_dimens.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_share/flutter_share.dart';
+import '../../shared/data/models/quote.dart';
+import '../../ui/widgets/circle_image_button.dart';
+import '../../../constants/app_assets_images.dart';
+import '../../../constants/app_dimens.dart';
 
-import 'categories_widget.dart';
+import '../widgets/categories_widget.dart';
 
 class QuoteTile extends StatelessWidget {
   final Quote quote;

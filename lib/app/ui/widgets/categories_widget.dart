@@ -1,5 +1,6 @@
-import 'package:chucknorris_quotes/app/shared/data/models/category.dart';
 import 'package:flutter/material.dart';
+import '../tiles/category_tile.dart';
+import '../../shared/data/models/category.dart';
 
 class CategoriesWidget extends StatelessWidget {
   final List<Category> categories;
@@ -13,9 +14,7 @@ class CategoriesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: categories.map((e) => _tile(context, e)).toList(),
+      children: categories.map((e) => CategoryTile(e)).toList(),
     );
   }
-
-  Widget _tile(BuildContext context, Category category) => Text(category.name);
 }

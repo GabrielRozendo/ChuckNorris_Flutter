@@ -1,40 +1,17 @@
-import 'package:chucknorris_quotes/app/shared/data/models/category.dart';
-import 'package:chucknorris_quotes/app/shared/data/models/quote.dart';
-import 'package:chucknorris_quotes/app/ui/widgets/quote_tile.dart';
-import 'package:chucknorris_quotes/constants/app_assets_images.dart';
-import 'package:chucknorris_quotes/constants/app_dimens.dart';
-import 'package:chucknorris_quotes/constants/app_strings.dart';
 import 'package:flutter/material.dart';
-import '../../../constants/app_routes.dart';
+import 'package:provider/provider.dart';
+import '../tiles/quote_tile.dart';
+import '../../shared/data/models/quote.dart';
+import '../../shared/repositories/providers/home_results.dart';
 import '../../shared/repositories/quotes/service/quotes_repository.dart';
+import '../../../constants/app_assets_images.dart';
+import '../../../constants/app_dimens.dart';
+import '../../../constants/app_strings.dart';
+import '../../../constants/app_routes.dart';
 
 class HomePage extends StatelessWidget {
   final QuotesRepository service = QuotesRepository();
-  List<Quote> _quotes = [
-    //TODO: Remove
-    Quote(
-      categories: [
-        Category(name: 'dev'),
-        Category(name: 'humor'),
-      ],
-      createdAt: DateTime.now(),
-      iconUrl: 'https://assets.chucknorris.host/img/avatar/chuck-norris.png',
-      id: 'KjILg4flRjyoyTU6tfvvfQ',
-      updatedAt: DateTime.now(),
-      url: 'https://api.chucknorris.io/jokes/KjILg4flRjyoyTU6tfvvfQ',
-      value: 'Life is what Chuck Norris makes it.',
-    ),
-    Quote(
-      categories: [Category(name: AppStrings.uncategorized)],
-      createdAt: DateTime.now(),
-      iconUrl: 'https://assets.chucknorris.host/img/avatar/chuck-norris.png',
-      id: 'KjILg4flRjyoyTU6tfvvfQ',
-      updatedAt: DateTime.now(),
-      url: 'https://api.chucknorris.io/jokes/KjILg4flRjyoyTU6tfvvfQ',
-      value:
-          'asfd asklf asdçf jkaslçd jfaslçj dflaçsf jkaslçd jfaslçj dflaçs f jkaslçd jfaslçj dflaçs f jkaslçd jfaslçj dflaçs f jkaslçd jfaslçj dflaçs f jkaslçd jfaslçj dflaçs f jkaslçd jfaslçj dflaçsj dfldsaj lsaj fas lçfjsçl jflçhat Chuck Norris makes it.',
-    ),
-  ];
+
   HomePage({Key key}) : super(key: key);
 
   @override
@@ -52,13 +29,30 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: _body(context),
+      body: Consumer<HomeResultsChanger>(
+        builder:
+            (BuildContext context, HomeResultsChanger homeResultsChanger, _) =>
+                FutureBuilder(
+          future: homeResultsChanger.snapshotQuotes,
+          builder: (BuildContext context, AsyncSnapshot<List<Quote>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting)
+              return _loading(context);
+            if (snapshot.hasError) return _error(context);
+            if (!snapshot.hasData) return _emptyState(context);
+            return _results(context, snapshot.data);
+          },
+        ),
+      ),
     );
   }
 
-  Widget _body(BuildContext context) => _quotes == null || _quotes.isEmpty
-      ? _emptyState(context)
-      : _list(context);
+  Widget _loading(BuildContext context) => Center(
+        child: CircularProgressIndicator(),
+      );
+
+  Widget _error(BuildContext context) => Center(
+        child: Icon(Icons.error),
+      );
 
   Widget _emptyState(BuildContext context) => Center(
         child: Column(
@@ -80,9 +74,11 @@ class HomePage extends StatelessWidget {
         ),
       );
 
-  Widget _list(BuildContext context) => ListView.separated(
-      itemBuilder: (BuildContext context, int index) =>
-          QuoteTile(_quotes[index]),
-      separatorBuilder: (_, __) => Divider(),
-      itemCount: _quotes?.length ?? 0);
+  Widget _results(BuildContext context, List<Quote> quotes) =>
+      ListView.separated(
+        itemBuilder: (BuildContext context, int index) =>
+            QuoteTile(quotes[index]),
+        separatorBuilder: (_, __) => Divider(),
+        itemCount: quotes?.length ?? 0,
+      );
 }

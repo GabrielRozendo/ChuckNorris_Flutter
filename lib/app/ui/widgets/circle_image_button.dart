@@ -1,4 +1,3 @@
-import 'package:chucknorris_quotes/constants/app_dimens.dart';
 import 'package:flutter/material.dart';
 
 class CircleImageButton extends StatelessWidget {
