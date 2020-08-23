@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
 
 import 'error_response.dart';
 import 'http_request.dart';
@@ -49,13 +48,8 @@ class HttpSession implements HttpSessionProtocol {
       errorResponse.response = response;
       return errorResponse;
     } catch (exception) {
-      print(exception);
+      debugPrint(exception);
       return ErrorResponse().genericError(message: exception.toString());
     }
-  }
-
-  Future<Mapable> requestMock(Mapable responseType, String mockAsset) async {
-    String json = await rootBundle.loadString(mockAsset);
-    return Mapable(responseType, json);
   }
 }

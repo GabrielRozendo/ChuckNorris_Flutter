@@ -17,6 +17,8 @@ dependencies:
   cached_network_image: ^2.2.0+1
   flutter_share: ^1.0.2+1
   shared_preferences: ^0.5.8
+  get_it: ^4.0.4
+  path: ^1.7.0
 
 dev_dependencies:
   flutter_test:
@@ -32,8 +34,6 @@ flutter:
     - assets/images/icons8-search-64.png
     - assets/images/icons8-unavailable-64.png
     - assets/images/icons8-quote-left-64.png
-
-    - assets/data/mock/
 
   fonts:
     - family: Montserrat

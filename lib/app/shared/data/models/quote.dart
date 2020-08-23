@@ -5,9 +5,7 @@
 //     final quote = quoteFromJson(jsonString);
 
 import 'dart:convert';
-
 import 'category.dart';
-import '../../../../constants/app_strings.dart';
 
 class Quote {
   Quote({
@@ -35,29 +33,28 @@ class Quote {
   static List<Category> _getCategories(Map<String, dynamic> json) {
     List<Category> categories = json['categories'] == null
         ? []
-        : List<Category>.from(json['categories'].map((x) => x));
+        : List<Category>.from(
+            json['categories'].map(
+              (x) => x is String ? Category(name: x) : Category.fromJson(x),
+            ),
+          );
 
-    if (categories.isEmpty)
-      categories.add(
-        Category(name: AppStrings.uncategorized),
-      );
+    if (categories.isEmpty) categories.add(Category.defaultCategory());
     return categories;
   }
 
-  factory Quote.fromJson(Map<String, dynamic> json) {
-    return Quote(
-      categories: _getCategories(json),
-      createdAt: DateTime.parse(json['created_at']),
-      iconUrl: json['icon_url'],
-      id: json['id'],
-      updatedAt: DateTime.parse(json['updated_at']),
-      url: json['url'],
-      value: json['value'],
-    );
-  }
+  factory Quote.fromJson(Map<String, dynamic> json) => Quote(
+        categories: _getCategories(json),
+        createdAt: DateTime.parse(json['created_at']),
+        iconUrl: json['icon_url'],
+        id: json['id'],
+        updatedAt: DateTime.parse(json['updated_at']),
+        url: json['url'],
+        value: json['value'],
+      );
 
   Map<String, dynamic> toJson() => {
-        'categories': List<Category>.from(categories.map((x) => x.toJson())),
+        'categories': List<dynamic>.from(categories.map((x) => x.toJson())),
         'created_at': createdAt.toIso8601String(),
         'icon_url': iconUrl,
         'id': id,
@@ -65,4 +62,12 @@ class Quote {
         'url': url,
         'value': value,
       };
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Quote && runtimeType == other.runtimeType && id == other.id;
+
+  @override
+  int get hashCode => id.hashCode;
 }

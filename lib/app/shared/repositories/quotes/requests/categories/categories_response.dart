@@ -6,7 +6,7 @@ class QuotesCategoriesResponse extends ListMapable {
 
   @override
   Mapable fromJsonList(List json) {
-    if (json.isNotEmpty) categories = json;
+    categories = json.map((e) => Category(name: e)).toList();
     return this;
   }
 }

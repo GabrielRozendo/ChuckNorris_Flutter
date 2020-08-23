@@ -1,0 +1,95 @@
+{
+  "total": 10,
+  "result": [
+    {
+      "categories": ["explicit"],
+      "created_at": "2020-01-05 13:42:18.823766",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "_n6ztutzSL-gyH1SQ2xafg",
+      "updated_at": "2020-01-05 13:42:18.823766",
+      "url": "https://api.chucknorris.io/jokes/_n6ztutzSL-gyH1SQ2xafg",
+      "value": "Chuck Norris can put you in a coma by slapping you in the face with his dick."
+    },
+    {
+      "categories": ["explicit"],
+      "created_at": "2020-01-05 13:42:18.823766",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "RX3L0rCGRc6pSCzghxzL3g",
+      "updated_at": "2020-01-05 13:42:18.823766",
+      "url": "https://api.chucknorris.io/jokes/RX3L0rCGRc6pSCzghxzL3g",
+      "value": "Horses have long faces because they keep challenging Chuck Norris to \"whos got the biggest dick\" contests."
+    },
+    {
+      "categories": [],
+      "created_at": "2020-01-05 13:42:18.823766",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "iyigyr-fqi-cxllf6qnpag",
+      "updated_at": "2020-01-05 13:42:18.823766",
+      "url": "https://api.chucknorris.io/jokes/iyigyr-fqi-cxllf6qnpag",
+      "value": "Chuck Norris keeps his friends close and his enemies closer. Close enough to drop them with one round house kick to the face."
+    },
+    {
+      "categories": ["dev"],
+      "created_at": "2020-01-05 13:42:18.823766",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "zdj0bfkjsmup6pkb2rpmbw",
+      "updated_at": "2020-01-05 13:42:18.823766",
+      "url": "https://api.chucknorris.io/jokes/zdj0bfkjsmup6pkb2rpmbw",
+      "value": "Chuck Norris is the only human being to display the Heisenberg uncertainty principle - you can never know both exactly where and how quickly he will roundhouse-kick you in the face."
+    },
+    {
+      "categories": [],
+      "created_at": "2020-01-05 13:42:18.823766",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "LNqCW_FmQ5ubonXnop02kQ",
+      "updated_at": "2020-01-05 13:42:18.823766",
+      "url": "https://api.chucknorris.io/jokes/LNqCW_FmQ5ubonXnop02kQ",
+      "value": "The only thing you can beat Chuck Norris at is the number of times you've had your face kicked in."
+    },
+    {
+      "categories": ["career"],
+      "created_at": "2020-01-05 13:42:18.823766",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "cwguxfhptcuagndjdt1hya",
+      "updated_at": "2020-01-05 13:42:18.823766",
+      "url": "https://api.chucknorris.io/jokes/cwguxfhptcuagndjdt1hya",
+      "value": "In the beginning there was nothing...then Chuck Norris Roundhouse kicked that nothing in the face and said \"Get a job\". That is the story of the universe."
+    },
+    {
+      "categories": [],
+      "created_at": "2020-01-05 13:42:18.823766",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "ovpkkf3lr2ar6wix6nef7q",
+      "updated_at": "2020-01-05 13:42:18.823766",
+      "url": "https://api.chucknorris.io/jokes/ovpkkf3lr2ar6wix6nef7q",
+      "value": "Chuck Norris doesnt shave; he kicks himself in the face. The only thing that can cut Chuck Norris is Chuck Norris."
+    },
+    {
+      "categories": ["dev"],
+      "created_at": "2020-01-05 13:42:18.823766",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "obr8yor_qv6rdrnnvcgayw",
+      "updated_at": "2020-01-05 13:42:18.823766",
+      "url": "https://api.chucknorris.io/jokes/obr8yor_qv6rdrnnvcgayw",
+      "value": "Every time Chuck Norris smiles, someone dies. Unless he smiles while he?s roundhouse kicking someone in the face. Then two people die."
+    },
+    {
+      "categories": [],
+      "created_at": "2020-01-05 13:42:19.104863",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "kGjO8ja6TY6n6CaIAlBl-w",
+      "updated_at": "2020-01-05 13:42:19.104863",
+      "url": "https://api.chucknorris.io/jokes/kGjO8ja6TY6n6CaIAlBl-w",
+      "value": "You don't really see a light at the end of the tunnel you see Chuck Norris roundhouse kick your face."
+    },
+    {
+      "categories": [],
+      "created_at": "2020-01-05 13:42:19.104863",
+      "icon_url": "https://assets.chucknorris.host/img/avatar/chuck-norris.png",
+      "id": "u4xgukrisucgbi8lhx_wkw",
+      "updated_at": "2020-01-05 13:42:19.104863",
+      "url": "https://api.chucknorris.io/jokes/u4xgukrisucgbi8lhx_wkw",
+      "value": "It is said that looking into Chuck Norris' eyes will reveal your future. Unfortunately, everybody's future is always the same: death by a roundhouse-kick to the face."
+    }
+  ]
+}

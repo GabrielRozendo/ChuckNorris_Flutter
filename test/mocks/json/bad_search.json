@@ -1,0 +1,9 @@
+{
+  "timestamp": "2020-08-22T20:36:50.330Z",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "search.query: tamanho deve estar entre 3 e 120",
+  "violations": {
+    "search.query": "tamanho deve estar entre 3 e 120"
+  }
+}

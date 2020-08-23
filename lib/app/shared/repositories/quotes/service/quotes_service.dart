@@ -24,7 +24,4 @@ class QuotesService extends HttpRequestProtocol {
 
   @override
   String get path => request.endpoint;
-
-  @override
-  String get mockAssetName => request.mock;
 }

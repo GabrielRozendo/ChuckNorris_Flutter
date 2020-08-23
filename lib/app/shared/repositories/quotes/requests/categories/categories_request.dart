@@ -4,7 +4,4 @@ import '../../../../network/request_protocol.dart';
 class QuotesCategoriesRequest extends RequestProtocol {
   @override
   String get endpoint => QuotesEndpoints.categories;
-
-  @override
-  String get mock => throw UnimplementedError();
 }

@@ -8,7 +8,6 @@ abstract class HttpRequestProtocol {
   HttpMethod get method;
   Map<String, String> get headers;
   Map<String, dynamic> get parameters;
-  String get mockAssetName;
 
   /// Do not override this getter. Whenever the method's request is GET,
   /// the layer will concatenate the parameters into the query.
