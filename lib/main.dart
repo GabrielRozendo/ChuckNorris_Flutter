@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'app/helpers/dependency_assembly.dart';
 import 'app_router.dart';
 import 'constants/app_routes.dart';
 import 'constants/app_strings.dart';
 import 'constants/themes/app_theme.dart';
 import 'app/shared/repositories/providers/home_results.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final sharedPrefs = await SharedPreferences.getInstance();
+  DependencyAssembly.setupDependencyAssembler(sharedPrefs);
 
   runApp(
     ChangeNotifierProvider(
