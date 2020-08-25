@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../tiles/quote_tile.dart';
+import '../widgets/home_empty_state.dart';
 import '../../shared/data/models/quote.dart';
 import '../../shared/repositories/providers/home_results.dart';
 import '../../shared/repositories/quotes/service/quotes_repository.dart';
 import '../../../constants/app_assets_images.dart';
-import '../../../constants/app_dimens.dart';
-import '../../../constants/app_strings.dart';
 import '../../../constants/app_routes.dart';
 
 class HomePage extends StatelessWidget {
@@ -38,7 +37,7 @@ class HomePage extends StatelessWidget {
             if (snapshot.connectionState == ConnectionState.waiting)
               return _loading(context);
             if (snapshot.hasError) return _error(context);
-            if (!snapshot.hasData) return _emptyState(context);
+            if (!snapshot.hasData) return HomeEmptyState();
             return _results(context, snapshot.data);
           },
         ),
@@ -52,26 +51,6 @@ class HomePage extends StatelessWidget {
 
   Widget _error(BuildContext context) => Center(
         child: Icon(Icons.error),
-      );
-
-  Widget _emptyState(BuildContext context) => Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Image.asset(
-              AppAssetsImages.unavailable,
-              color: Theme.of(context).primaryIconTheme.color,
-              width: 60,
-              height: 60,
-            ),
-            SizedBox(height: AppDimens.paddingM),
-            Text(
-              AppStrings.emptyStateMessage,
-              style: Theme.of(context).primaryTextTheme.subtitle1,
-            ),
-          ],
-        ),
       );
 
   Widget _results(BuildContext context, List<Quote> quotes) =>
