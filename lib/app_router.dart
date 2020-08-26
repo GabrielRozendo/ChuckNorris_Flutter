@@ -1,11 +1,11 @@
-import 'package:chucknorris_quotes/app/shared/repositories/quotes/service/quotes_repository.dart';
-import 'package:chucknorris_quotes/app/ui/pages/SplashPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'app/helpers/dependency_assembly.dart';
 import 'app/shared/data/viewmodels/categories_model..dart';
 import 'app/shared/data/viewmodels/past_searches_model.dart';
+import 'app/shared/repositories/quotes/quotes_repository.dart';
 import 'app/ui/pages/HomePage.dart';
+import 'app/ui/pages/SplashPage.dart';
 import 'app/ui/pages/SearchPage.dart';
 import 'constants/app_routes.dart';
 

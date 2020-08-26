@@ -7,7 +7,7 @@ import '../../shared/data/viewmodels/past_searches_model.dart';
 import '../../shared/data/models/search_result.dart';
 import '../../shared/data/models/quote.dart';
 import '../../shared/repositories/providers/home_results.dart';
-import '../../shared/repositories/quotes/service/quotes_repository.dart';
+import '../../shared/repositories/quotes/quotes_repository.dart';
 import '../../../constants/app_assets_images.dart';
 import '../../../constants/app_dimens.dart';
 import '../../../constants/app_strings.dart';

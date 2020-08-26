@@ -4,7 +4,7 @@ import '../shared/data/models/search_result.dart';
 import '../shared/data/viewmodels/shared_prefs.dart';
 import '../shared/data/viewmodels/past_searches_model.dart';
 import '../shared/data/viewmodels/categories_model..dart';
-import '../shared/repositories/quotes/service/quotes_repository.dart';
+import '../shared/repositories/quotes/quotes_repository.dart';
 import '../../constants/app_sharedpref.dart';
 
 GetIt dependencyAssembler = GetIt.I;
@@ -27,8 +27,8 @@ class DependencyAssembly {
 
   static void setupDependencyAssembler(SharedPreferences sharedPrefs) {
     final sharedPrefsVM = _registerSharedPrefs(sharedPrefs);
-    dependencyAssembler.registerFactory<SharedPrefsViewModelProtocol>(
-      () => sharedPrefsVM,
+    dependencyAssembler.registerSingleton<SharedPrefsViewModelProtocol>(
+      sharedPrefsVM,
     );
 
     dependencyAssembler.registerSingleton<PastSearchesViewModel>(
