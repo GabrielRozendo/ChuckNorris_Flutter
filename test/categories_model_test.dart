@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:chucknorris_quotes/app/shared/data/viewmodels/shared_prefs.dart';
 import 'package:chucknorris_quotes/app/helpers/dependency_assembly.dart';
 import 'package:chucknorris_quotes/app/shared/data/viewmodels/categories_model..dart';
-import 'package:chucknorris_quotes/app/shared/repositories/quotes/service/quotes_repository.dart';
+import 'package:chucknorris_quotes/app/shared/repositories/quotes/quotes_repository.dart';
 import 'package:chucknorris_quotes/constants/app_sharedpref.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

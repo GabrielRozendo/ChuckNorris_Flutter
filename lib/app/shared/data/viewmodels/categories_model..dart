@@ -4,7 +4,7 @@ import 'base_viewmodel.dart';
 import 'shared_prefs.dart';
 
 import '../models/category.dart';
-import '../../repositories/quotes/service/quotes_repository.dart';
+import '../../repositories/quotes/quotes_repository.dart';
 import '../../../helpers/enum/view_state.dart';
 import '../../../../constants/app_sharedpref.dart';
 import '../../../../constants/app_settings.dart';
@@ -19,31 +19,28 @@ class CategoriesViewModel extends BaseViewModel {
   List<Category> _categories;
   List<Category> get categories => _categories;
 
-  void _populate(QuotesRepository repository) {
+  void _populate(QuotesRepository repository) async {
     applyState(ViewState.Busy);
 
     final list = _sharedPreferences.getStringList(AppSharedPref.categories);
     if (list == null)
-      _fetchCategories(repository);
+      _categories = await _fetchCategories(repository);
     else
-      _getCategoriesSaved(list);
-  }
-
-  void _getCategoriesSaved(List<String> list) {
-    _categories = List<Category>.from(
-      list.map((e) => Category.fromRawJson(e)),
-    );
+      _categories = _getCategoriesSaved(list);
 
     applyState(ViewState.Idle);
   }
 
-  void _fetchCategories(QuotesRepository repository) async {
-    final categories = await repository.getCategories();
+  List<Category> _getCategoriesSaved(List<String> list) => List<Category>.from(
+        list.map((e) => Category.fromRawJson(e)),
+      );
+
+  Future<List<Category>> _fetchCategories(QuotesRepository repository) async {
+    final categories = await repository.fetchCategories();
     final jsonList = categories.map<String>((e) => e.toRawJson()).toList();
 
-    if (await _save(jsonList)) _categories = categories;
-
-    applyState(ViewState.Idle);
+    if (await _save(jsonList)) return categories;
+    return [];
   }
 
   Future<bool> _save(List<String> json) => _sharedPreferences

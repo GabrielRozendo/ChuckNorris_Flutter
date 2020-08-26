@@ -28,6 +28,12 @@ class PastSearchesViewModel extends BaseViewModel {
     return result;
   }
 
+  SearchResult getFromCache(String term) {
+    final item = _history.singleWhere((e) => e.term == term, orElse: null);
+    if (item != null) updateItem(item);
+    return item;
+  }
+
   Future<bool> addItem(SearchResult searchResult) async {
     applyState(ViewState.Busy);
     final newHistory = Set.of(_history);
