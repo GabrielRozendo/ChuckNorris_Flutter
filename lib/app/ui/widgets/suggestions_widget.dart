@@ -1,10 +1,11 @@
+import 'package:chucknorris_quotes/app/shared/data/models/category.dart';
 import 'package:flutter/material.dart';
 import '../tiles/category_tile.dart';
-import '../../shared/data/viewmodels/categories_model..dart';
 
 class SuggestionsWidget extends StatelessWidget {
-  final CategoriesViewModel categoriesViewModel;
-  SuggestionsWidget(this.categoriesViewModel, {Key key}) : super(key: key);
+  final List<Category> list;
+  final void Function(Category) action;
+  SuggestionsWidget(this.list, this.action, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +17,18 @@ class SuggestionsWidget extends StatelessWidget {
         childAspectRatio: 4,
       ),
       delegate: SliverChildBuilderDelegate(
-        (BuildContext context, int index) => Card(
-          child: GridTile(
-            child: CategoryTile(categoriesViewModel.categories[index]),
-          ),
-        ),
-        childCount: categoriesViewModel.categories.length,
+        (BuildContext context, int index) {
+          final item = list[index];
+          return Card(
+            child: InkWell(
+              onTap: () => action(item),
+              child: GridTile(
+                child: CategoryTile(item),
+              ),
+            ),
+          );
+        },
+        childCount: list.length,
       ),
     );
   }

@@ -44,4 +44,8 @@ class QuotesRepository {
     if (response is ErrorMapable) return Future.error(response.message);
     return Future.error(AppStrings.genericError);
   }
+
+  Future<List<Quote>> searchByCategory(Category category) async {
+    //TODO: Implement...
+  }
 }

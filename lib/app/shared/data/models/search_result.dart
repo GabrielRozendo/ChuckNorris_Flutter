@@ -13,7 +13,7 @@ class SearchResult extends Comparable {
   SearchResult({this.term, this.dateTime, this.result});
 
   final String term;
-  final DateTime dateTime;
+  DateTime dateTime;
   final List<Quote> result;
 
   factory SearchResult.fromRawJson(String str) =>

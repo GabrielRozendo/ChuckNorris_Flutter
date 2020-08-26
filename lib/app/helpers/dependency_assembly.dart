@@ -27,15 +27,18 @@ class DependencyAssembly {
 
   static void setupDependencyAssembler(SharedPreferences sharedPrefs) {
     final sharedPrefsVM = _registerSharedPrefs(sharedPrefs);
-    dependencyAssembler
-        .registerFactory<SharedPrefsViewModelProtocol>(() => sharedPrefsVM);
+    dependencyAssembler.registerFactory<SharedPrefsViewModelProtocol>(
+      () => sharedPrefsVM,
+    );
 
     dependencyAssembler.registerSingleton<PastSearchesViewModel>(
-        _registerPastSearches(sharedPrefsVM));
+      _registerPastSearches(sharedPrefsVM),
+    );
 
     final quotesRepository = QuotesRepository();
     dependencyAssembler.registerFactory(() => quotesRepository);
     dependencyAssembler.registerSingleton<CategoriesViewModel>(
-        CategoriesViewModel(sharedPrefsVM, quotesRepository));
+      CategoriesViewModel(sharedPrefsVM, quotesRepository),
+    );
   }
 }

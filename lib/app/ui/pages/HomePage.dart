@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../tiles/quote_tile.dart';
+import '../widgets/loading_widget.dart';
 import '../widgets/home_empty_state.dart';
 import '../../shared/data/models/quote.dart';
 import '../../shared/repositories/providers/home_results.dart';
-import '../../shared/repositories/quotes/service/quotes_repository.dart';
 import '../../../constants/app_assets_images.dart';
 import '../../../constants/app_routes.dart';
 
 class HomePage extends StatelessWidget {
-  final QuotesRepository service = QuotesRepository();
-
   HomePage({Key key}) : super(key: key);
 
   @override
@@ -35,7 +33,7 @@ class HomePage extends StatelessWidget {
           future: homeResultsChanger.snapshotQuotes,
           builder: (BuildContext context, AsyncSnapshot<List<Quote>> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting)
-              return _loading(context);
+              return LoadingWidget();
             if (snapshot.hasError) return _error(context);
             if (!snapshot.hasData) return HomeEmptyState();
             return _results(context, snapshot.data);
@@ -44,10 +42,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-  Widget _loading(BuildContext context) => Center(
-        child: CircularProgressIndicator(),
-      );
 
   Widget _error(BuildContext context) => Center(
         child: Icon(Icons.error),

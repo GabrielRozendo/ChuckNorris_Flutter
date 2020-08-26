@@ -1,13 +1,13 @@
 import 'dart:math';
-import 'package:chucknorris_quotes/app/helpers/enum/view_state.dart';
-import 'package:chucknorris_quotes/constants/app_sharedpref.dart';
 
 import 'base_viewmodel.dart';
+import 'shared_prefs.dart';
 
 import '../models/category.dart';
 import '../../repositories/quotes/service/quotes_repository.dart';
+import '../../../helpers/enum/view_state.dart';
+import '../../../../constants/app_sharedpref.dart';
 import '../../../../constants/app_settings.dart';
-import 'shared_prefs.dart';
 
 class CategoriesViewModel extends BaseViewModel {
   final SharedPrefsViewModelProtocol _sharedPreferences;
@@ -16,37 +16,40 @@ class CategoriesViewModel extends BaseViewModel {
     _populate(repository);
   }
 
+  List<Category> _categories;
+  List<Category> get categories => _categories;
+
   void _populate(QuotesRepository repository) {
+    applyState(ViewState.Busy);
+
     final list = _sharedPreferences.getStringList(AppSharedPref.categories);
     if (list == null)
-      _getCategories(repository);
+      _fetchCategories(repository);
     else
-      _categories = List<Category>.from(
-        list.map((e) => Category.fromRawJson(e)),
-      );
+      _getCategoriesSaved(list);
   }
 
-  Future<bool> _getCategories(QuotesRepository repository) async {
-    applyState(ViewState.Busy);
+  void _getCategoriesSaved(List<String> list) {
+    _categories = List<Category>.from(
+      list.map((e) => Category.fromRawJson(e)),
+    );
+
+    applyState(ViewState.Idle);
+  }
+
+  void _fetchCategories(QuotesRepository repository) async {
     final categories = await repository.getCategories();
     final jsonList = categories.map<String>((e) => e.toRawJson()).toList();
 
-    bool result = false;
-    if (await _save(jsonList)) {
-      _categories = categories;
-      result = true;
-    }
+    if (await _save(jsonList)) _categories = categories;
+
     applyState(ViewState.Idle);
-    return result;
   }
 
   Future<bool> _save(List<String> json) => _sharedPreferences
       .setStringList(AppSharedPref.categories, json)
       .then((value) => value)
       .catchError((_) => false);
-
-  List<Category> _categories;
-  List<Category> get categories => _categories;
 
   List<int> randomIndexes(int size, int maxNumber) {
     if (size > maxNumber)

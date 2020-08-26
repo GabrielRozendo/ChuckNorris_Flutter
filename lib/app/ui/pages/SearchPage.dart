@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/past_searches_widget.dart';
 import '../widgets/suggestions_widget.dart';
+import '../../shared/data/models/category.dart';
 import '../../shared/data/viewmodels/past_searches_model.dart';
-import '../../shared/data/viewmodels/categories_model..dart';
+import '../../shared/data/models/search_result.dart';
+import '../../shared/data/models/quote.dart';
 import '../../shared/repositories/providers/home_results.dart';
 import '../../shared/repositories/quotes/service/quotes_repository.dart';
 import '../../../constants/app_assets_images.dart';
@@ -11,11 +13,13 @@ import '../../../constants/app_dimens.dart';
 import '../../../constants/app_strings.dart';
 
 class SearchPage extends StatelessWidget {
-  final repository = QuotesRepository();
-  final CategoriesViewModel categories;
-  final PastSearchesViewModel pastSearches;
+  final QuotesRepository repository;
+  final List<Category> categories;
+  final PastSearchesViewModel pastSearchesViewModel;
 
-  SearchPage(this.categories, this.pastSearches, {Key key}) : super(key: key);
+  SearchPage(this.repository, this.categories, this.pastSearchesViewModel,
+      {Key key})
+      : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
   final _searchController = TextEditingController();
@@ -31,8 +35,14 @@ class SearchPage extends StatelessWidget {
             slivers: <Widget>[
               _appBar(context),
               SliverToBoxAdapter(child: Divider()),
-              SuggestionsWidget(categories),
-              PastSearchesWidget(pastSearches.sortHistory),
+              SuggestionsWidget(
+                categories,
+                (category) => _suggestionAction(context, category),
+              ),
+              PastSearchesWidget(
+                pastSearchesViewModel.sortHistory,
+                (searchResult) => _pastSearchAction(context, searchResult),
+              ),
             ],
           ),
         ),
@@ -101,10 +111,28 @@ class SearchPage extends StatelessWidget {
     _formKey.currentState.save();
     if (!_formKey.currentState.validate()) return;
 
-    FocusScope.of(context).unfocus();
-    Provider.of<HomeResultsChanger>(context, listen: false).updateSnapshot(
+    _updateSnapshot(
+      context,
       repository.search(_searchController.text),
     );
+  }
+
+  void _suggestionAction(BuildContext context, Category category) {
+    _updateSnapshot(
+      context,
+      repository.searchByCategory(category),
+    );
+  }
+
+  void _pastSearchAction(BuildContext context, SearchResult searchResult) {
+    pastSearchesViewModel.updateItem(searchResult);
+    _updateSnapshot(context, Future.value(searchResult.result));
+  }
+
+  void _updateSnapshot(BuildContext context, Future<List<Quote>> future) {
+    FocusScope.of(context).unfocus();
+    Provider.of<HomeResultsChanger>(context, listen: false)
+        .updateSnapshot(future);
     Navigator.of(context).pop();
   }
 }

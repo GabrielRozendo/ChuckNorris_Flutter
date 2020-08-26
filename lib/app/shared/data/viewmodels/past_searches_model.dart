@@ -44,5 +44,30 @@ class PastSearchesViewModel extends BaseViewModel {
     return result;
   }
 
-  List<SearchResult> get sortHistory => _history.toList()..sort();
+  Future<bool> updateItem(SearchResult searchResult) async {
+    applyState(ViewState.Busy);
+    final newHistory = Set.of(_history);
+    SearchResult existentItem = newHistory.singleWhere(
+      (e) => e.term == searchResult.term,
+      orElse: null,
+    );
+    if (existentItem == null) return false;
+    searchResult.dateTime = DateTime.now();
+    existentItem = searchResult;
+    final jsonList = newHistory.map<String>((e) => e.toRawJson()).toList();
+
+    bool result = false;
+    if (await _save(jsonList)) {
+      _history = newHistory;
+      result = true;
+    }
+    applyState(ViewState.Idle);
+    return result;
+  }
+
+  List<SearchResult> get sortHistory {
+    final list = _history.toList();
+    list.sort();
+    return list.reversed.toList();
+  }
 }
