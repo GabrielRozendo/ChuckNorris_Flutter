@@ -1,4 +1,6 @@
 import 'service/quotes_service.dart';
+import 'requests/random_category/random_category_request.dart';
+import 'requests/random_category/random_category_response.dart';
 import 'requests/search/search_request.dart';
 import 'requests/categories/categories_response.dart';
 import 'requests/search/search_response.dart';
@@ -51,6 +53,15 @@ class QuotesRepository {
   }
 
   Future<List<Quote>> searchByCategory(Category category) async {
-    //TODO: Implement...
+    final response = await _session.request(
+      service: QuotesService(QuotesRandomCategoryRequest(category)),
+      responseType: QuotesRandomCategoryResponse(),
+    );
+
+    if (response is QuotesRandomCategoryResponse) {
+      return [response.quote];
+    }
+    if (response is ErrorMapable) return Future.error(response.message);
+    return Future.error(AppStrings.genericError);
   }
 }

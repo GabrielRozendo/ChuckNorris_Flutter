@@ -8,4 +8,5 @@ class QuotesEndpoints {
   static String get random => 'random';
   static String get categories => 'categories';
   static String search(String term) => 'search?query=$term';
+  static String randomCategory(String category) => '/random?category=$category';
 }
