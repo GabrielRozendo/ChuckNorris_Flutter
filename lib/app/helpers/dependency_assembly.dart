@@ -1,10 +1,11 @@
-import 'package:chucknorris_quotes/app/shared/data/viewmodels/shared_prefs_settings.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../shared/data/models/search_result.dart';
-import '../shared/data/viewmodels/shared_prefs.dart';
-import '../shared/data/viewmodels/past_searches_model.dart';
 import '../shared/data/viewmodels/categories_model..dart';
+import '../shared/data/viewmodels/past_searches_model.dart';
+import '../shared/data/viewmodels/shared_prefs.dart';
+import '../shared/data/viewmodels/shared_prefs_settings.dart';
 import '../shared/repositories/quotes/quotes_repository.dart';
 import '../../constants/app_sharedpref.dart';
 

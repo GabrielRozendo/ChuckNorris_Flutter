@@ -11,10 +11,12 @@ class QuotesService extends HttpRequestProtocol {
   String get baseUrl => QuotesEndpoints.baseUrl;
 
   @override
-  Map<String, String> get headers => {
-        'content-type': 'application/x-www-form-urlencoded',
-        'accept': 'application/json',
-      }..addAll(request.headers);
+  Map<String, String> get headers {
+    return {
+      'content-type': 'application/x-www-form-urlencoded',
+      'accept': 'application/json',
+    }..addAll(request.headers);
+  }
 
   @override
   HttpMethod get method => request.httpMethod;

@@ -1,6 +1,7 @@
+import 'package:flutter_test/flutter_test.dart';
+
 import 'package:chucknorris_quotes/app/shared/data/models/category.dart';
 import 'package:chucknorris_quotes/app/shared/data/models/quote.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 import 'mocks/quote_mock.dart';
 

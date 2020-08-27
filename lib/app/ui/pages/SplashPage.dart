@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
+
 import '../widgets/loading_widget.dart';
 import '../../shared/data/viewmodels/categories_model..dart';
 import '../../../constants/app_routes.dart';

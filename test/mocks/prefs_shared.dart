@@ -1,5 +1,6 @@
-import 'package:chucknorris_quotes/app/shared/data/viewmodels/shared_prefs.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'package:chucknorris_quotes/app/shared/data/viewmodels/shared_prefs.dart';
 
 class PrefSharedsMock implements SharedPrefsViewModelProtocol {
   @override
@@ -15,8 +16,9 @@ class PrefSharedsMock implements SharedPrefsViewModelProtocol {
   bool getBool(String key) => true;
 
   @override
-  Future<bool> setBool(String key, bool value) =>
-      Future.delayed(Duration(seconds: 1), () => true);
+  Future<bool> setBool(String key, bool value) {
+    return Future.delayed(Duration(seconds: 1), () => true);
+  }
 }
 
 class PrefSharedsErrorMock implements SharedPrefsViewModelProtocol {
@@ -24,13 +26,15 @@ class PrefSharedsErrorMock implements SharedPrefsViewModelProtocol {
   List<String> getStringList(String key) => null;
 
   @override
-  Future<bool> setStringList(String key, List<String> value) =>
-      Future.delayed(Duration(seconds: 1), () => throw Exception('mock'));
+  Future<bool> setStringList(String key, List<String> value) {
+    return Future.delayed(Duration(seconds: 1), () => throw Exception('mock'));
+  }
 
   @override
   bool getBool(String key) => null;
 
   @override
-  Future<bool> setBool(String key, bool value) =>
-      Future.delayed(Duration(seconds: 1), () => throw Exception('mock'));
+  Future<bool> setBool(String key, bool value) {
+    return Future.delayed(Duration(seconds: 1), () => throw Exception('mock'));
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../tiles/category_tile.dart';
 import '../../shared/data/models/category.dart';
 

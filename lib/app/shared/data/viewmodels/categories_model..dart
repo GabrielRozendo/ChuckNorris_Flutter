@@ -31,9 +31,11 @@ class CategoriesViewModel extends BaseViewModel {
     applyState(ViewState.Idle);
   }
 
-  List<Category> _getCategoriesSaved(List<String> list) => List<Category>.from(
-        list.map((e) => Category.fromRawJson(e)),
-      );
+  List<Category> _getCategoriesSaved(List<String> list) {
+    return List<Category>.from(
+      list.map((e) => Category.fromRawJson(e)),
+    );
+  }
 
   Future<List<Category>> _fetchCategories(QuotesRepository repository) async {
     final categories = await repository.fetchCategories();
@@ -43,10 +45,12 @@ class CategoriesViewModel extends BaseViewModel {
     return [];
   }
 
-  Future<bool> _save(List<String> json) => _sharedPreferences
-      .setStringList(AppSharedPref.categories, json)
-      .then((value) => value)
-      .catchError((_) => false);
+  Future<bool> _save(List<String> json) {
+    return _sharedPreferences
+        .setStringList(AppSharedPref.categories, json)
+        .then((value) => value)
+        .catchError((_) => false);
+  }
 
   List<int> randomIndexes(int size, int maxNumber) {
     if (size > maxNumber)

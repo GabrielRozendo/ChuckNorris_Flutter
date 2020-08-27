@@ -43,30 +43,35 @@ class Quote {
     return categories;
   }
 
-  factory Quote.fromJson(Map<String, dynamic> json) => Quote(
-        categories: _getCategories(json),
-        createdAt: DateTime.parse(json['created_at']),
-        iconUrl: json['icon_url'],
-        id: json['id'],
-        updatedAt: DateTime.parse(json['updated_at']),
-        url: json['url'],
-        value: json['value'],
-      );
+  factory Quote.fromJson(Map<String, dynamic> json) {
+    return Quote(
+      categories: _getCategories(json),
+      createdAt: DateTime.parse(json['created_at']),
+      iconUrl: json['icon_url'],
+      id: json['id'],
+      updatedAt: DateTime.parse(json['updated_at']),
+      url: json['url'],
+      value: json['value'],
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        'categories': List<dynamic>.from(categories.map((x) => x.toJson())),
-        'created_at': createdAt.toIso8601String(),
-        'icon_url': iconUrl,
-        'id': id,
-        'updated_at': updatedAt.toIso8601String(),
-        'url': url,
-        'value': value,
-      };
+  Map<String, dynamic> toJson() {
+    return {
+      'categories': List<dynamic>.from(categories.map((x) => x.toJson())),
+      'created_at': createdAt.toIso8601String(),
+      'icon_url': iconUrl,
+      'id': id,
+      'updated_at': updatedAt.toIso8601String(),
+      'url': url,
+      'value': value,
+    };
+  }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Quote && runtimeType == other.runtimeType && id == other.id;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is Quote && runtimeType == other.runtimeType && id == other.id;
+  }
 
   @override
   int get hashCode => id.hashCode;

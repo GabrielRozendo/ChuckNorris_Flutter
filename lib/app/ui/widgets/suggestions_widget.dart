@@ -1,6 +1,7 @@
-import 'package:chucknorris_quotes/app/shared/data/models/category.dart';
 import 'package:flutter/material.dart';
+
 import '../tiles/category_tile.dart';
+import '../../shared/data/models/category.dart';
 
 class SuggestionsWidget extends StatelessWidget {
   final List<Category> list;

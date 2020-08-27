@@ -8,22 +8,26 @@ import 'mock_files.dart';
 import 'quote_mock.dart';
 
 class SearchResultMock {
-  static SearchResult get singleSearchResult => SearchResult(
-        dateTime: QuoteMock.fakeDate,
-        term: 'term',
-        result: QuoteMock.multipleQuotes,
-      );
+  static SearchResult get singleSearchResult {
+    return SearchResult(
+      dateTime: QuoteMock.fakeDate,
+      term: 'term',
+      result: QuoteMock.multipleQuotes,
+    );
+  }
 
-  static Set<SearchResult> get listSearchResult => Set<SearchResult>.from(
-        [
-          singleSearchResult,
-          SearchResult(
-            dateTime: QuoteMock.fakeDate,
-            term: 'term2',
-            result: QuoteMock.multipleQuotes,
-          ),
-        ],
-      );
+  static Set<SearchResult> get listSearchResult {
+    return Set<SearchResult>.from(
+      [
+        singleSearchResult,
+        SearchResult(
+          dateTime: QuoteMock.fakeDate,
+          term: 'term2',
+          result: QuoteMock.multipleQuotes,
+        ),
+      ],
+    );
+  }
 
   static Future<SearchResult> futureSearchResult(String term) async {
     final file = File(MockFiles.SearchFace.fileName);

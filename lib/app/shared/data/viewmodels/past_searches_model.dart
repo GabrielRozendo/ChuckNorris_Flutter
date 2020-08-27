@@ -13,10 +13,12 @@ class PastSearchesViewModel extends BaseViewModel {
   Set<SearchResult> _history;
   Set<SearchResult> get history => _history;
 
-  Future<bool> _save(List<String> json) async => _sharedPreferences
-      .setStringList(AppSharedPref.pastSearches, json)
-      .then((value) => value)
-      .catchError((_) => false);
+  Future<bool> _save(List<String> json) async {
+    return _sharedPreferences
+        .setStringList(AppSharedPref.pastSearches, json)
+        .then((value) => value)
+        .catchError((_) => false);
+  }
 
   Future<bool> clear() async {
     bool result = false;

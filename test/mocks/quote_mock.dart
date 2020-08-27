@@ -10,15 +10,17 @@ import 'mock_files.dart';
 class QuoteMock {
   static DateTime get fakeDate => DateTime(2020, 01, 05, 13, 42, 28);
 
-  static Quote get singleQuote => Quote(
-        categories: [Category(name: 'mock')],
-        createdAt: fakeDate,
-        iconUrl: 'https://assets.chucknorris.host/img/avatar/chuck-norris.png',
-        id: '3eudvPgFQX2dYCuOIUtFpA',
-        updatedAt: fakeDate,
-        url: 'https://api.chucknorris.io/jokes/3eudvPgFQX2dYCuOIUtFpA',
-        value: 'It\'s only a fake quote =)',
-      );
+  static Quote get singleQuote {
+    return Quote(
+      categories: [Category(name: 'mock')],
+      createdAt: fakeDate,
+      iconUrl: 'https://assets.chucknorris.host/img/avatar/chuck-norris.png',
+      id: '3eudvPgFQX2dYCuOIUtFpA',
+      updatedAt: fakeDate,
+      url: 'https://api.chucknorris.io/jokes/3eudvPgFQX2dYCuOIUtFpA',
+      value: 'It\'s only a fake quote =)',
+    );
+  }
 
   static List<Quote> get multipleQuotes => [singleQuote, singleQuote];
 

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'app/helpers/dependency_assembly.dart';
 import 'app_router.dart';
+import 'app/helpers/dependency_assembly.dart';
+import 'app/shared/repositories/providers/home_results.dart';
 import 'constants/app_routes.dart';
 import 'constants/app_strings.dart';
 import 'constants/themes/app_theme.dart';
-import 'app/shared/repositories/providers/home_results.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

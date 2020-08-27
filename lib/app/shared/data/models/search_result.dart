@@ -21,21 +21,25 @@ class SearchResult extends Comparable {
 
   String toRawJson() => json.encode(toJson());
 
-  factory SearchResult.fromJson(Map<String, dynamic> json) => SearchResult(
-        term: json[SearchResultFields.term],
-        dateTime: DateTime.parse(json[SearchResultFields.dateTime]),
-        result: List<Quote>.from(
-          json[SearchResultFields.result].map((x) => Quote.fromJson(x)),
-        ),
-      );
+  factory SearchResult.fromJson(Map<String, dynamic> json) {
+    return SearchResult(
+      term: json[SearchResultFields.term],
+      dateTime: DateTime.parse(json[SearchResultFields.dateTime]),
+      result: List<Quote>.from(
+        json[SearchResultFields.result].map((x) => Quote.fromJson(x)),
+      ),
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        SearchResultFields.term: term,
-        SearchResultFields.dateTime: dateTime.toIso8601String(),
-        SearchResultFields.result: List<Map>.from(
-          result.map((x) => x.toJson()),
-        ),
-      };
+  Map<String, dynamic> toJson() {
+    return {
+      SearchResultFields.term: term,
+      SearchResultFields.dateTime: dateTime.toIso8601String(),
+      SearchResultFields.result: List<Map>.from(
+        result.map((x) => x.toJson()),
+      ),
+    };
+  }
 
   @override
   int compareTo(other) {
@@ -51,11 +55,12 @@ class SearchResult extends Comparable {
   }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SearchResult &&
-          runtimeType == other.runtimeType &&
-          term == other.term;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is SearchResult &&
+            runtimeType == other.runtimeType &&
+            term == other.term;
+  }
 
   @override
   int get hashCode => term.hashCode;

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../widgets/past_searches_widget.dart';
 import '../widgets/suggestions_widget.dart';
 import '../../shared/data/models/category.dart';
-import '../../shared/data/viewmodels/past_searches_model.dart';
-import '../../shared/data/models/search_result.dart';
 import '../../shared/data/models/quote.dart';
+import '../../shared/data/models/search_result.dart';
+import '../../shared/data/viewmodels/past_searches_model.dart';
 import '../../shared/repositories/providers/home_results.dart';
 import '../../shared/repositories/quotes/quotes_repository.dart';
 import '../../../constants/app_assets_images.dart';

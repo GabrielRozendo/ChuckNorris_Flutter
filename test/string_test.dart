@@ -1,6 +1,7 @@
-import 'package:chucknorris_quotes/constants/app_settings.dart';
 import 'package:flutter_test/flutter_test.dart';
+
 import 'package:chucknorris_quotes/app/helpers/extensions/string_extension.dart';
+import 'package:chucknorris_quotes/constants/app_settings.dart';
 
 import 'mocks/quote_mock.dart';
 

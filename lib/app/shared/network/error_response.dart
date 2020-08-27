@@ -1,7 +1,7 @@
 import 'package:http/http.dart';
-import '../../../constants/app_strings.dart';
 
 import 'network_mappers.dart';
+import '../../../constants/app_strings.dart';
 
 class ErrorResponse implements ErrorMapable, BaseMapable {
   @override

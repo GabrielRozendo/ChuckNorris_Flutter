@@ -10,17 +10,17 @@ class SharedPrefsSettings extends BaseViewModel {
     _populate();
   }
 
-  bool _hasAlreadySearch;
-  bool get hasAlreadySearch => _hasAlreadySearch;
+  bool _hasAlreadySearched;
+  bool get hasAlreadySearch => _hasAlreadySearched;
   set hasAlreadySearch(bool value) {
     _sharedPreferences.setBool(AppSharedPref.hasAlreadySearched, value);
-    _hasAlreadySearch = value;
+    _hasAlreadySearched = value;
   }
 
   void _populate() async {
     applyState(ViewState.Busy);
 
-    _hasAlreadySearch =
+    _hasAlreadySearched =
         _sharedPreferences.getBool(AppSharedPref.hasAlreadySearched) ?? false;
 
     applyState(ViewState.Idle);

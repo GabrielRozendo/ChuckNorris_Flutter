@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+
 import '../../helpers/dependency_assembly.dart';
 import '../../shared/repositories/providers/home_results.dart';
 import '../../shared/repositories/quotes/quotes_repository.dart';

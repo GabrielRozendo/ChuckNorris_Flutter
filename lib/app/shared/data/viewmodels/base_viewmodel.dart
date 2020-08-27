@@ -1,5 +1,6 @@
-import 'package:chucknorris_quotes/app/helpers/enum/view_state.dart';
 import 'package:flutter/foundation.dart';
+
+import '../../../helpers/enum/view_state.dart';
 
 class BaseViewModel extends ChangeNotifier {
   ViewState _state = ViewState.Idle;

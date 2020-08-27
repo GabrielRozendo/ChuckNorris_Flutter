@@ -1,5 +1,6 @@
-import 'package:chucknorris_quotes/app/shared/data/models/search_result.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'package:chucknorris_quotes/app/shared/data/models/search_result.dart';
 
 import 'mocks/search_result_mock.dart';
 

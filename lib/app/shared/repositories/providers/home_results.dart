@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../data/models/quote.dart';
 
 class HomeResultsChanger with ChangeNotifier {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../app/shared/data/models/search_result.dart';
 
 class PastSearchesWidget extends StatelessWidget {
