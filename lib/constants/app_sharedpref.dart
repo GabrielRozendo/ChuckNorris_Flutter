@@ -3,4 +3,5 @@ class AppSharedPref {
 
   static const String pastSearches = 'past_searches';
   static const String categories = 'categories';
+  static const String hasAlreadySearched = 'hasAlreadySearched';
 }

@@ -1,3 +1,6 @@
+import 'package:chucknorris_quotes/app/helpers/dependency_assembly.dart';
+import 'package:chucknorris_quotes/app/shared/data/viewmodels/shared_prefs_settings.dart';
+import 'package:chucknorris_quotes/app/ui/widgets/no_results.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../tiles/quote_tile.dart';
@@ -11,6 +14,7 @@ import '../../../constants/app_routes.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key key}) : super(key: key);
+  final _settings = dependencyAssembler.get<SharedPrefsSettings>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,10 @@ class HomePage extends StatelessWidget {
             if (snapshot.connectionState == ConnectionState.waiting)
               return LoadingWidget();
             if (snapshot.hasError) return _error(context);
-            if (!snapshot.hasData) return HomeEmptyState();
+            if (!snapshot.hasData)
+              return _settings.hasAlreadySearch
+                  ? NoResults()
+                  : HomeEmptyState();
             return _results(context, snapshot.data);
           },
         ),

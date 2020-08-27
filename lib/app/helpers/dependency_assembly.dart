@@ -1,3 +1,4 @@
+import 'package:chucknorris_quotes/app/shared/data/viewmodels/shared_prefs_settings.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../shared/data/models/search_result.dart';
@@ -39,6 +40,9 @@ class DependencyAssembly {
     dependencyAssembler.registerFactory(() => quotesRepository);
     dependencyAssembler.registerSingleton<CategoriesViewModel>(
       CategoriesViewModel(sharedPrefsVM, quotesRepository),
+    );
+    dependencyAssembler.registerSingleton<SharedPrefsSettings>(
+      SharedPrefsSettings(sharedPrefsVM),
     );
   }
 }
