@@ -8,4 +8,5 @@ class AppSettings {
   static const String defaultCategory = AppStrings.uncategorized;
   static const int longCharacteres = 80;
   static const int maxCategories = 8;
+  static const int randomQuantity = 10;
 }

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../tiles/quote_tile.dart';
 import '../widgets/loading_widget.dart';
 import '../widgets/home_empty_state.dart';
+import '../widgets/random_icon.dart';
 import '../../shared/data/models/quote.dart';
 import '../../shared/repositories/providers/home_results.dart';
 import '../../../constants/app_assets_images.dart';
@@ -18,6 +19,7 @@ class HomePage extends StatelessWidget {
         title: Text('Home'),
         centerTitle: true,
         actions: [
+          RandomIcon(),
           IconButton(
             icon: Image.asset(AppAssetsImages.search),
             onPressed: () => Navigator.of(context).pushNamed(
