@@ -1,28 +1,32 @@
+import 'dart:collection';
 import 'dart:math';
 
-import 'base_viewmodel.dart';
-import 'shared_prefs.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'base_viewmodel.dart';
 import '../models/category.dart';
 import '../../repositories/quotes/quotes_repository.dart';
+import '../../../helpers/dependency_assembly.dart';
 import '../../../helpers/enum/view_state.dart';
 import '../../../../constants/app_sharedpref.dart';
 import '../../../../constants/app_settings.dart';
 
 class CategoriesViewModel extends BaseViewModel {
-  final SharedPrefsViewModelProtocol _sharedPreferences;
-  CategoriesViewModel(this._sharedPreferences, QuotesRepository repository)
-      : assert(_sharedPreferences != null && repository != null) {
-    _populate(repository);
+  CategoriesViewModel() {
+    _populate();
   }
 
+  final _sharedPrefs = dependencyAssembler.get<SharedPreferences>();
+
   List<Category> _categories;
-  List<Category> get categories => _categories;
+  UnmodifiableListView<Category> get categories =>
+      UnmodifiableListView(_categories);
 
-  void _populate(QuotesRepository repository) async {
+  void _populate() async {
     applyState(ViewState.Busy);
+    final repository = dependencyAssembler.get<QuotesRepository>();
 
-    final list = _sharedPreferences.getStringList(AppSharedPref.categories);
+    final list = _sharedPrefs.getStringList(AppSharedPref.categories);
     if (list == null)
       _categories = await _fetchCategories(repository);
     else
@@ -46,15 +50,23 @@ class CategoriesViewModel extends BaseViewModel {
   }
 
   Future<bool> _save(List<String> json) {
-    return _sharedPreferences
+    return _sharedPrefs
         .setStringList(AppSharedPref.categories, json)
         .then((value) => value)
         .catchError((_) => false);
   }
 
   List<int> randomIndexes(int size, int maxNumber) {
+    ArgumentError.checkNotNull(size, 'size');
+    ArgumentError.checkNotNull(maxNumber, 'maxNumber');
+
+    if (size <= 0) throw ArgumentError.value(size, 'size', 'Invalid argument');
+    if (maxNumber <= 0)
+      throw ArgumentError.value(maxNumber, 'maxNumber', 'Invalid argument');
+
     if (size > maxNumber)
-      throw Exception('Size must not be bigger than max number');
+      throw ArgumentError.value(
+          size, 'Size must not be bigger than max number');
 
     final numbers = Set<int>();
     final random = Random();
@@ -68,6 +80,11 @@ class CategoriesViewModel extends BaseViewModel {
   }
 
   List<Category> randomize({int size = AppSettings.maxCategories}) {
+    ArgumentError.checkNotNull(size, 'size');
+    if (size <= 0) throw ArgumentError.value(size, 'size', 'Invalid argument');
+
+    if (_categories?.isEmpty ?? true) return [];
+
     final randomIndexesList = randomIndexes(size, _categories.length - 1);
     final randomCategoryList =
         randomIndexesList.map((i) => _categories[i]).toList();
