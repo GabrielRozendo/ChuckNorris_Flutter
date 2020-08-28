@@ -13,4 +13,6 @@ class CategoryMock {
     final response = QuotesCategoriesResponse()..fromJsonList(json);
     return response.categories;
   }
+
+  static Category get singleCategory => Category(name: 'category');
 }

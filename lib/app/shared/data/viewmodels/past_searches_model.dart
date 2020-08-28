@@ -1,20 +1,31 @@
-import 'package:chucknorris_quotes/app/helpers/enum/view_state.dart';
+import 'dart:collection';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'base_viewmodel.dart';
-import 'shared_prefs.dart';
 import '../models/search_result.dart';
+import '../../../helpers/dependency_assembly.dart';
+import '../../../helpers/enum/view_state.dart';
 import '../../../../constants/app_sharedpref.dart';
 
 class PastSearchesViewModel extends BaseViewModel {
-  final SharedPrefsViewModelProtocol _sharedPreferences;
-  PastSearchesViewModel(this._sharedPreferences, this._history)
-      : assert(_sharedPreferences != null && _history != null);
+  PastSearchesViewModel() {
+    _populate();
+  }
 
+  final _sharedPrefs = dependencyAssembler.get<SharedPreferences>();
   Set<SearchResult> _history;
-  Set<SearchResult> get history => _history;
+  UnmodifiableListView<SearchResult> get history =>
+      UnmodifiableListView(_history);
+
+  void _populate() {
+    final list = _sharedPrefs.getStringList(AppSharedPref.pastSearches) ?? [];
+    final searchResultList = list.map((e) => SearchResult.fromRawJson(e));
+    _history = Set<SearchResult>.from(searchResultList);
+  }
 
   Future<bool> _save(List<String> json) async {
-    return _sharedPreferences
+    return _sharedPrefs
         .setStringList(AppSharedPref.pastSearches, json)
         .then((value) => value)
         .catchError((_) => false);

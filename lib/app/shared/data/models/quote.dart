@@ -55,6 +55,25 @@ class Quote {
     );
   }
 
+  Quote copyWith({
+    List<Category> categories,
+    DateTime createdAt,
+    String iconUrl,
+    String id,
+    DateTime updatedAt,
+    String url,
+    String value,
+  }) {
+    return Quote(
+        categories: categories ?? this.categories,
+        createdAt: createdAt ?? this.createdAt,
+        iconUrl: iconUrl ?? this.iconUrl,
+        id: id ?? this.id,
+        updatedAt: updatedAt ?? this.updatedAt,
+        url: url ?? this.url,
+        value: value ?? this.value);
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'categories': List<dynamic>.from(categories.map((x) => x.toJson())),

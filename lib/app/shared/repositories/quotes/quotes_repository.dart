@@ -1,16 +1,16 @@
-import 'service/quotes_service.dart';
+import 'requests/categories/categories_request.dart';
+import 'requests/categories/categories_response.dart';
 import 'requests/random/random_request.dart';
 import 'requests/random/random_response.dart';
 import 'requests/random_category/random_category_request.dart';
 import 'requests/random_category/random_category_response.dart';
 import 'requests/search/search_request.dart';
-import 'requests/categories/categories_response.dart';
 import 'requests/search/search_response.dart';
-import 'requests/categories/categories_request.dart';
+import 'service/quotes_service.dart';
 import '../../data/models/category.dart';
-import '../../data/viewmodels/past_searches_model.dart';
-import '../../data/viewmodels/categories_model..dart';
 import '../../data/models/quote.dart';
+import '../../data/viewmodels/cache_viewmodel.dart';
+import '../../data/viewmodels/past_searches_model.dart';
 import '../../network/http_session.dart';
 import '../../network/network_mappers.dart';
 import '../../../helpers/dependency_assembly.dart';
@@ -19,11 +19,7 @@ import '../../../../constants/app_strings.dart';
 class QuotesRepository {
   final _session = dependencyAssembler<HttpSession>();
   final _pastSearchViewModel = dependencyAssembler<PastSearchesViewModel>();
-  final _categoriesViewModel = dependencyAssembler<CategoriesViewModel>();
-
-  List<Category> getCategories() {
-    return _categoriesViewModel.categories;
-  }
+  final _cacheViewModel = dependencyAssembler<CacheViewModel>();
 
   Future<List<Category>> fetchCategories() async {
     final response = await _session.request(
@@ -43,6 +39,7 @@ class QuotesRepository {
     );
 
     if (response is QuotesRandomResponse) {
+      _cacheViewModel.add(response.quote);
       return response.quote;
     }
     if (response is ErrorMapable) return Future.error(response.message);
@@ -67,6 +64,7 @@ class QuotesRepository {
     );
 
     if (response is QuotesSearchResponse) {
+      _cacheViewModel.addAll(response.searchResult.result);
       _pastSearchViewModel.addItem(response.searchResult);
       return response.searchResult.result;
     }
@@ -81,6 +79,7 @@ class QuotesRepository {
     );
 
     if (response is QuotesRandomCategoryResponse) {
+      _cacheViewModel.add(response.quote);
       return [response.quote];
     }
     if (response is ErrorMapable) return Future.error(response.message);

@@ -22,7 +22,20 @@ class QuoteMock {
     );
   }
 
-  static List<Quote> get multipleQuotes => [singleQuote, singleQuote];
+  static Quote get singleQuote2 => singleQuote.copyWith(id: 'different');
+
+  static List<Quote> get multipleQuotes => [singleQuote, singleQuote2];
+
+  static Future<List<Quote>> get futureMultipleQuotes async {
+    final futures = [
+      longValue,
+      multipleCategorized,
+      noCategorized,
+      shortValue,
+      singleCategorized,
+    ];
+    return await Future.wait(futures);
+  }
 
   static Future<Quote> get singleCategorized async {
     final file = File(MockFiles.SingleCategorized.fileName);
