@@ -32,4 +32,6 @@ Install WSL + LINUX Commands
 
 flutter test --coverage
 (if run on Windows, need change \ for /)
+cp coverage/lcov.info coverage/lcov2.info && sed 's/\\/\//g' coverage/lcov2.info > coverage/lcov.info && rm coverage/lcov2.info
+
 genhtml coverage/lcov.info -o coverage/html
