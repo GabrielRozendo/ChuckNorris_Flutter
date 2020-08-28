@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'app/helpers/dependency_assembly.dart';
 import 'app/shared/data/viewmodels/categories_model..dart';
 import 'app/shared/data/viewmodels/past_searches_model.dart';
