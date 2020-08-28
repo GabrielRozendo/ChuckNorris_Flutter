@@ -19,9 +19,11 @@ class PastSearchesViewModel extends BaseViewModel {
       UnmodifiableListView(_history);
 
   void _populate() {
+    applyState(ViewState.Busy);
     final list = _sharedPrefs.getStringList(AppSharedPref.pastSearches) ?? [];
     final searchResultList = list.map((e) => SearchResult.fromRawJson(e));
     _history = Set<SearchResult>.from(searchResultList);
+    applyState(ViewState.Idle);
   }
 
   Future<bool> _save(List<String> json) async {
@@ -42,12 +44,16 @@ class PastSearchesViewModel extends BaseViewModel {
   }
 
   SearchResult getFromCache(String term) {
+    ArgumentError.checkNotNull(term, 'term');
+    if (_history == null || _history.isEmpty) return null;
+
     final item = _history.singleWhere((e) => e.term == term, orElse: null);
     if (item != null) updateItem(item);
     return item;
   }
 
   Future<bool> addItem(SearchResult searchResult) async {
+    ArgumentError.checkNotNull(searchResult, 'searchResult');
     applyState(ViewState.Busy);
     final newHistory = Set.of(_history);
     newHistory.removeWhere((e) => e.term == searchResult.term);
@@ -64,15 +70,17 @@ class PastSearchesViewModel extends BaseViewModel {
   }
 
   Future<bool> updateItem(SearchResult searchResult) async {
+    ArgumentError.checkNotNull(searchResult, 'searchResult');
+    if (_history == null || _history.isEmpty) return false;
+
     applyState(ViewState.Busy);
     final newHistory = Set.of(_history);
-    SearchResult existentItem = newHistory.singleWhere(
+    SearchResult item = newHistory.singleWhere(
       (e) => e.term == searchResult.term,
       orElse: null,
     );
-    if (existentItem == null) return false;
-    searchResult.dateTime = DateTime.now();
-    existentItem = searchResult;
+    if (item == null) return false;
+    item.dateTime = DateTime.now();
     final jsonList = newHistory.map<String>((e) => e.toRawJson()).toList();
 
     bool result = false;
@@ -85,6 +93,7 @@ class PastSearchesViewModel extends BaseViewModel {
   }
 
   List<SearchResult> get sortHistory {
+    if (_history == null || _history.isEmpty) return [];
     final list = _history.toList();
     list.sort();
     return list.reversed.toList();

@@ -42,16 +42,23 @@ class CacheViewModel extends BaseViewModel {
   }
 
   void add(Quote quote) {
+    ArgumentError.checkNotNull(quote, 'quote');
     _cachedList.add(quote);
     _onUpdate();
   }
 
   void addAll(Iterable<Quote> quotes) {
+    ArgumentError.checkNotNull(quotes, 'quotes');
     _cachedList.addAll(quotes);
     _onUpdate();
   }
 
   List<Quote> random(int count) {
+    ArgumentError.checkNotNull(count, 'count');
+    if (count < 0)
+      throw ArgumentError.value(count, 'count', 'Invalid argument');
+    else if (count == 0) return [];
+
     final list = _cachedList.toList()..shuffle();
     return list.take(count).toList();
   }

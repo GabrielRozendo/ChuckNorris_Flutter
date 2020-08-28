@@ -14,6 +14,8 @@ class SharedPrefsSettings extends BaseViewModel {
   bool _hasAlreadySearched;
   bool get hasAlreadySearch => _hasAlreadySearched;
   set hasAlreadySearch(bool value) {
+    ArgumentError.checkNotNull(value, 'value');
+
     _sharedPrefs.setBool(AppSharedPref.hasAlreadySearched, value);
     _hasAlreadySearched = value;
   }

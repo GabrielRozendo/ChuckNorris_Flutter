@@ -30,6 +30,7 @@ void main() {
 
       final categoriesViewModel =
           dependencyAssembler.get<CategoriesViewModel>();
+      //FIXME: AddListener is not working :(
       categoriesViewModel.addListener(() {
         if (!categoriesViewModel.isReady) return;
 
@@ -77,6 +78,7 @@ void main() {
       final categoriesViewModel =
           dependencyAssembler.get<CategoriesViewModel>();
       final size = 3;
+      //FIXME: AddListener is not working :(
       categoriesViewModel.addListener(() {
         if (!categoriesViewModel.isReady) return;
 
