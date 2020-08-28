@@ -28,13 +28,12 @@ void main() {
     expect(list.isNotEmpty, true);
   });
 
-  test('Should return randomize values', () {
+  test('Should return randomize values', () async {
     final cacheViewModel = dependencyAssembler.get<CacheViewModel>();
-    final quotes = QuoteMock.multipleQuotes;
-
-    cacheViewModel.addAll(quotes);
-    final list1 = cacheViewModel.random(quotes.length);
-    final list2 = cacheViewModel.random(quotes.length);
+    final size = 10;
+    cacheViewModel.addAll(QuoteMock.multipleQuotes(size: size));
+    final list1 = cacheViewModel.random(size);
+    final list2 = cacheViewModel.random(size);
     expect(listEquals(list1, list2), false);
   });
 
@@ -47,7 +46,8 @@ void main() {
 
   test('Should load from shared', () async {
     final sharedPrefs = await SharedPreferences.getInstance();
-    final quotes = QuoteMock.multipleQuotes;
+    final quotes = QuoteMock.multipleQuotes();
+
     sharedPrefs.setStringList(
       AppSharedPref.cache,
       quotes.map((e) => e.toRawJson()).toList(),

@@ -77,8 +77,12 @@ void main() {
       final categoriesViewModel =
           dependencyAssembler.get<CategoriesViewModel>();
       final size = 3;
-      final result = categoriesViewModel.randomize(size: size);
-      expect(result.length == size, true);
+      categoriesViewModel.addListener(() {
+        if (!categoriesViewModel.isReady) return;
+
+        final result = categoriesViewModel.randomize(size: size);
+        expect(result.length == size, true);
+      });
     });
 
     test('Should not return duplicate numbers', () async {

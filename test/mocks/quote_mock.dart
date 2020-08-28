@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:chucknorris_quotes/app/shared/data/models/category.dart';
 import 'package:chucknorris_quotes/app/shared/data/models/quote.dart';
@@ -24,7 +25,17 @@ class QuoteMock {
 
   static Quote get singleQuote2 => singleQuote.copyWith(id: 'different');
 
-  static List<Quote> get multipleQuotes => [singleQuote, singleQuote2];
+  static Quote get singleQuoteRandom {
+    final random = Random();
+    final newId = (random.nextDouble() * random.nextDouble()).toString();
+    return singleQuote.copyWith(id: newId);
+  }
+
+  static List<Quote> multipleQuotes({int size = 10}) {
+    final list = List<Quote>();
+    for (int i = 0; i <= size; i++) list.add(singleQuoteRandom);
+    return list;
+  }
 
   static Future<List<Quote>> get futureMultipleQuotes async {
     final futures = [

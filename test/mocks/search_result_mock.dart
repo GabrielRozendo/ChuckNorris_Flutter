@@ -12,7 +12,7 @@ class SearchResultMock {
     return SearchResult(
       dateTime: QuoteMock.fakeDate,
       term: 'term',
-      result: QuoteMock.multipleQuotes,
+      result: QuoteMock.multipleQuotes(),
     );
   }
 
@@ -23,7 +23,7 @@ class SearchResultMock {
         SearchResult(
           dateTime: QuoteMock.fakeDate,
           term: 'term2',
-          result: QuoteMock.multipleQuotes,
+          result: QuoteMock.multipleQuotes(),
         ),
       ],
     );

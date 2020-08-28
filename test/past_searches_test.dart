@@ -25,7 +25,7 @@ void main() {
 
     expect(
       () => pastSearchesVM.history.add(SearchResultMock.singleSearchResult),
-      throwsException,
+      throwsA(isInstanceOf<UnsupportedError>()),
     );
   });
 
@@ -75,13 +75,5 @@ void main() {
         SearchResult.fromRawJson(savedList.first) ==
             SearchResultMock.singleSearchResult;
     expect(isValid, true);
-  });
-
-  test('Should not allow change objects', () async {
-    final cacheViewModel = dependencyAssembler.get<PastSearchesViewModel>();
-    expect(
-      () => cacheViewModel.history.add(SearchResultMock.singleSearchResult),
-      throwsA(isInstanceOf<UnsupportedError>()),
-    );
   });
 }
