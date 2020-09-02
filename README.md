@@ -1,13 +1,16 @@
 # Chuck Norris Quotes
 
-It is a tech challenge interview for Mobile Enginieer as iOS or Android native.
-I've decided to do it in Flutter (this repo) and later also in iOS + Android (in this moment I dont know almost nothing!)
+Mobile Engineer - Code challen
 
-The description about the challenge is [challenge.md](https://github.com/GabrielRozendo/ChuckNorris_Flutter/challenge/challenge.md)
+It is a tech challenge interview for Mobile Engineer as iOS or Android native.
+I've decided to do it in Flutter (this repo) and later also in [iOS](https://github.com/GabrielRozendo/ChuckNorris_iOS) and Android (in this moment I dont know almost nothing about Kotlin!)
 
-TODO:
-[ ] Finalyze it
-[ ] Update this readme with approach solution
+The description about the challenge is in [challenge.md](challenge/challenge.md)
+
+## TODO
+
+- [ ] Finalyze it
+- [ ] Update this readme with approach solution
 
 ## Theme
 
