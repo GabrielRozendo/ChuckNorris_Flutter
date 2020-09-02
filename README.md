@@ -1,5 +1,14 @@
 # Chuck Norris Quotes
 
+It is a tech challenge interview for Mobile Enginieer as iOS or Android native.
+I've decided to do it in Flutter (this repo) and later also in iOS + Android (in this moment I dont know almost nothing!)
+
+The description about the challenge is [challenge.md](https://github.com/GabrielRozendo/ChuckNorris_Flutter/challenge/challenge.md)
+
+TODO:
+[ ] Finalyze it
+[ ] Update this readme with approach solution
+
 ## Theme
 
 ### Colors
@@ -16,7 +25,7 @@
 
 Created checking color contrast: <https://coolors.co/contrast-checker>
 
-
+### Some notes
 
 test coverages...
 
