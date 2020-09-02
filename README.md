@@ -1,6 +1,6 @@
-# Chuck Norris Quotes
+# WIP: Chuck Norris facts
 
-Mobile Engineer - Code challen
+Mobile Engineer - Code challenge 
 
 It is a tech challenge interview for Mobile Engineer as iOS or Android native.
 I've decided to do it in Flutter (this repo) and later also in [iOS](https://github.com/GabrielRozendo/ChuckNorris_iOS) and Android (in this moment I dont know almost nothing about Kotlin!)
